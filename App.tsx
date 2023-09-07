@@ -24,6 +24,7 @@ export default function App() {
         <Text fontFamily="body">Hello Word!</Text>
         <Text>{contador}</Text>
         <Button bgColor='cyan.500' width={100} onPress={handleOneMore}>MAIS UM</Button>
+        <Button bgColor='cyan.500' width={100} onPress={handleOneMore}>MAIS UM</Button>
 
       </Center>
     </NativeBaseProvider>
