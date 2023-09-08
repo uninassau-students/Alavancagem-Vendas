@@ -1,32 +1,36 @@
-
-import { NativeBaseProvider,Text,Center, Box,Button } from 'native-base';
-import { useState } from 'react';
+import * as React from 'react';
+import { NativeBaseProvider } from 'native-base'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { THEME } from './src/styles/theme';
-import {useFonts, Roboto_400Regular,Roboto_500Medium, Roboto_700Bold} from "@expo-google-fonts/roboto"
-
+import { useFonts, Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from "@expo-google-fonts/roboto"
+//
+import Home from './src/screens/home1';
+import LoginHome from './src/screens/LoginHome';
 
 
 export default function App() {
 
-  const [fontsLoaded] = useFonts({Roboto_400Regular,Roboto_500Medium,Roboto_700Bold})
+  const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_500Medium, Roboto_700Bold })
 
-
-
-  const [contador,setContador] = useState(1);
-
-  function handleOneMore(){
-     setContador(valorAtual => valorAtual + 1);
-  }
+  const Stack = createStackNavigator();
   return (
-    <NativeBaseProvider theme={THEME}>
-      <Center flex={1}>
-        
-        <Text fontFamily="body">Hello Word!</Text>
-        <Text>{contador}</Text>
-        <Button bgColor='cyan.500' width={100} onPress={handleOneMore}>MAIS UM</Button>
 
-      </Center>
+    <NativeBaseProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={Home} options={{
+            header: () => null,
+          }} />
+          <Stack.Screen name="Login" component={LoginHome} options={{
+            header: () => null,
+          }} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </NativeBaseProvider>
-  );
+
+  )
+
+
 }
 
