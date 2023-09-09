@@ -7,6 +7,7 @@ import { useFonts, Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from "@
 //
 import Home from './src/screens/home1';
 import LoginHome from './src/screens/LoginHome';
+import Nicho from './src/screens/nicho'
 
 
 export default function App() {
@@ -25,6 +26,10 @@ export default function App() {
           <Stack.Screen name="Login" component={LoginHome} options={{
             header: () => null,
           }} />
+           <Stack.Screen name="Nicho" component={Nicho} options={{
+            header: () => null,
+          }} />
+
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

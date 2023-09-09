@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text,Image,View} from 'react-native';
-import { NativeBaseProvider,Button } from 'native-base';
+import { StyleSheet, Text, Image, View } from 'react-native';
+import { NativeBaseProvider, Button } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { THEME } from '../styles/theme';
@@ -12,12 +12,12 @@ function Home() {
 
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_500Medium, Roboto_700Bold })
 
-    const navigation = useNavigation();
-  
-    const handlePress = () => {
-      
-      navigation.navigate('Login');
-    };
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+
+    navigation.navigate('Login');
+  };
 
   return (
 
@@ -29,14 +29,14 @@ function Home() {
           <Text style={{ fontSize: 40, paddingTop: 35, fontWeight: '400' }}>Bem-vindo</Text>
           <Text style={{ fontSize: 22, fontWeight: '400', marginTop: 50, color: 'black' }}>
             Veja formas de como poderá</Text>
-          <Text style={{ fontSize: 22, fontWeight: '400'}}>
+          <Text style={{ fontSize: 22, fontWeight: '400' }}>
             aumentar suas vendas.</Text>
-            <Button
-  style={styles.button}
-  onPress={handlePress}
->
-  <Text style={styles.buttonText}>Continuar</Text>
-</Button>
+          <Button
+            style={styles.button}
+            onPress={handlePress}
+          >
+            <Text style={styles.buttonText}>Continuar</Text>
+          </Button>
 
         </View>
         <StatusBar style="auto" />

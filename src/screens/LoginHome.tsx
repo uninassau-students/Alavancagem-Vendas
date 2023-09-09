@@ -1,14 +1,24 @@
 import React from 'react';
-
+import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { NativeBaseProvider, Button, useTheme } from 'native-base';
-import { StyleSheet, Text, View, TextInput,Image} from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
 
 
 function LoginHome() {
-    const theme = useTheme();
-    const handlePress = () => {
+    type RootStackParamList = {
+        Home: undefined;
+        Login: undefined;
+        Nicho: undefined;
+        // ... outras rotas ...
+    };
 
+    const theme = useTheme();
+    const navigation = useNavigation();
+
+    const handlePress = () => {
+        console.log('INDO PRA NICHO')
+        navigation.navigate('Nicho');
 
     };
 
@@ -24,14 +34,16 @@ function LoginHome() {
             </Text>
             <View style={styles.containerInput}>
                 <TextInput
+
+
                     placeholder="Seu email"
 
-                    style={{fontSize:16,  borderWidth: 1, color: "#8391A1", borderColor: '#E8ECF4', padding: 10, width: "100%" }}
+                    style={{ fontSize: 16, borderWidth: 1, color: "#8391A1", borderColor: '#E8ECF4', padding: 10, width: "100%" }}
                 />
                 <TextInput
                     placeholder="Sua senha"
-
-                    style={{ fontSize:16, borderWidth: 1, color: "#8391A1", borderColor: '#E8ECF4', padding: 10, marginTop: 15, width: "100%", marginBottom: 35 }}
+                    secureTextEntry={true}
+                    style={{ fontSize: 16, borderWidth: 1, color: "#8391A1", borderColor: '#E8ECF4', padding: 10, marginTop: 15, width: "100%", marginBottom: 35 }}
                 />
 
             </View>
@@ -45,11 +57,11 @@ function LoginHome() {
                 </Button>
 
                 <View style={styles.containerActiveGoogle}>
-                <Text style={{fontSize:15,marginBottom:5}}> Não tem conta ainda? <Text style={{fontSize:15,fontWeight:'600',paddingLeft:5}}>Registre-se</Text></Text>
-                <Text style={{fontSize:15}}>Ou entrar com </Text>
+                    <Text style={{ fontSize: 15, marginBottom: 5 }}> Não tem conta ainda? <Text style={{ fontSize: 15, fontWeight: '600', paddingLeft: 5 }}>Registre-se</Text></Text>
+                    <Text style={{ fontSize: 15 }}>Ou entrar com </Text>
 
-                <Image  source={require('../../assets/google_ic.png')} style={{ width:28, height:28,marginTop:60 }} />
-       
+                    <Image source={require('../../assets/google_ic.png')} style={{ width: 28, height: 28, marginTop: 60 }} />
+
                 </View>
 
             </View>
@@ -75,7 +87,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 20,
-        marginBottom:25
+        marginBottom: 25
 
     },
     buttonText: {
@@ -83,10 +95,10 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 15,
     },
-    containerActiveGoogle:{
-        fontSize:30,
-        justifyContent:"center",
-        alignItems:'center',
+    containerActiveGoogle: {
+        fontSize: 30,
+        justifyContent: "center",
+        alignItems: 'center',
 
     },
 });
