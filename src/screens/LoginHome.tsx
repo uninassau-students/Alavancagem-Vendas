@@ -6,16 +6,15 @@ import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
 
 
 function LoginHome() {
-    type RootStackParamList = {
-        Home: undefined;
-        Login: undefined;
-        Nicho: undefined;
-        // ... outras rotas ...
-    };
-
+  
     const theme = useTheme();
     const navigation = useNavigation();
 
+    const handlePressRegistrar = () => {
+        console.log('INDO PRA REGISTRAr')
+        navigation.navigate('Registrar');
+      };
+    
     const handlePress = () => {
         console.log('INDO PRA NICHO')
         navigation.navigate('Nicho');
@@ -57,7 +56,7 @@ function LoginHome() {
                 </Button>
 
                 <View style={styles.containerActiveGoogle}>
-                    <Text style={{ fontSize: 15, marginBottom: 5 }}> Não tem conta ainda? <Text style={{ fontSize: 15, fontWeight: '600', paddingLeft: 5 }}>Registre-se</Text></Text>
+                    <Text style={{ fontSize: 15, marginBottom: 5 }}> Não tem conta ainda? <Text style={{ fontSize: 15, fontWeight: '600', paddingLeft: 5 }} onPress={handlePressRegistrar}>Registre-se</Text></Text>
                     <Text style={{ fontSize: 15 }}>Ou entrar com </Text>
 
                     <Image source={require('../../assets/google_ic.png')} style={{ width: 28, height: 28, marginTop: 60 }} />
