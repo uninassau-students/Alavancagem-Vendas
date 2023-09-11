@@ -47,6 +47,7 @@ function Nicho() {
 
                 </View>
                 <View style={styles.containerdown}>
+                    
                     <Text style={{ fontWeight: '500', fontSize: 16, marginTop: '12%' }}>Com a sua escolha poderemos criar</Text>
                     <Text style={{ fontWeight: '500', fontSize: 16 }}> uma série de atividades para você.</Text>
 

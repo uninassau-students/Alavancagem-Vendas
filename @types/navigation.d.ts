@@ -5,6 +5,12 @@ export declare global {
             Login: undefined;
             Nicho: undefined;
             SelectCalendar:undefined;
+            Calendarj:undefined;
+            Calendarf: undefined;
+            Calendarm: undefined;
+            Calendara: undefined;
+            Calendarma: undefined;
+            Calendarjun: undefined;
         }
     }
 }
