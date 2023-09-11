@@ -2,9 +2,10 @@ import{Button as ButtonNative, Text} from 'native-base';
 
 interface props {
     text: string;
+    onPress: () => void;
 }
 
-export function Button({text}: props){
+export function Button({text, onPress}: props){
     return(
         <ButtonNative
         color="#fff"
@@ -12,6 +13,7 @@ export function Button({text}: props){
         bgColor="#9DD9E7"
         marginTop={10}
         padding={4}
+        onPress={onPress}
         ><Text color="#fff" fontSize={18}>{text}</Text></ButtonNative>
     )
 }

@@ -1,36 +1,35 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { Calendar } from 'react-native-calendars';
-import { Button } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import { useNavigation } from '@react-navigation/native';
-import { MarkedDates } from 'react-native-calendars/src/types';
+import React, { useState } from "react";
+import { StyleSheet, View, Text } from "react-native";
+import { Calendar } from "react-native-calendars";
+import { Button } from "react-native-elements";
+import Icon from "react-native-vector-icons/MaterialIcons";
+import { useNavigation } from "@react-navigation/native";
+import { MarkedDates } from "react-native-calendars/src/types";
 interface Day {
   dateString: string;
 }
 
 function Calendarma() {
-  const [selectedDate, setSelectedDate] = useState<string | null>('2023-05-01');
+  const [selectedDate, setSelectedDate] = useState<string | null>("2023-05-01");
   const navigation = useNavigation();
 
   const handlepress = () => {
-    console.log('Voltando');
-    navigation.navigate('SelectCalendar')
-  }
+    console.log("Voltando");
+    navigation.navigate("SelectCalendar");
+  };
 
   const handlepressHome = () => {
-    console.log('Home');
-    navigation.navigate('Login')
-  }
+    console.log("Home");
+    navigation.navigate("Login");
+  };
 
   const onDayPress = (day: Day) => {
-
     setSelectedDate(day.dateString);
   };
 
   const markedDates: MarkedDates = {};
   if (selectedDate) {
-    markedDates[selectedDate] = { dotColor: 'blue', selected: true };
+    markedDates[selectedDate] = { dotColor: "blue", selected: true };
   }
   const renderHeader = () => null;
 
@@ -41,28 +40,45 @@ function Calendarma() {
         onDayPress={onDayPress}
         markedDates={markedDates}
         theme={{
-
-          textSectionTitleColor: 'blue',
-          selectedDayBackgroundColor: 'blue',
-          selectedDayTextColor: 'white',
-          todayTextColor: 'blue',
-          dayTextColor: 'black',
-          textDisabledColor: 'gray',
-          dotColor: 'blue',
-          selectedDotColor: 'white',
-
-
+          textSectionTitleColor: "blue",
+          selectedDayBackgroundColor: "blue",
+          selectedDayTextColor: "white",
+          todayTextColor: "blue",
+          dayTextColor: "black",
+          textDisabledColor: "gray",
+          dotColor: "blue",
+          selectedDotColor: "white",
         }}
-        current={'2023-05-01'}
-        minDate={'2023-05-01'}
-        maxDate={'2023-05-30'}
+        current={"2023-05-01"}
+        minDate={"2023-05-01"}
+        maxDate={"2023-05-30"}
         hideArrows={true}
         hideMonthTitle={true}
-
         renderHeader={renderHeader}
       />
-      <Text style={{ fontWeight: '500', fontSize: 22, marginTop: 10, marginLeft: 20, }}>O que você vai fazer:</Text>
-      <Text style={{ fontWeight: '400', fontSize: 15, marginTop: 10, marginLeft: 20, justifyContent: 'center', paddingTop: 80 }}> Você realizará uma live mostrando seus produtos</Text>
+      <Text
+        style={{
+          fontWeight: "500",
+          fontSize: 22,
+          marginTop: 10,
+          marginLeft: 20,
+        }}
+      >
+        O que você vai fazer:
+      </Text>
+      <Text
+        style={{
+          fontWeight: "400",
+          fontSize: 15,
+          marginTop: 10,
+          marginLeft: 20,
+          justifyContent: "center",
+          paddingTop: 80,
+        }}
+      >
+        {" "}
+        Você realizará uma live mostrando seus produtos
+      </Text>
       <View style={styles.bottomButtons}>
         <Button
           icon={<Icon name="keyboard-arrow-left" size={30} color="#9DD9E7" />}
@@ -72,7 +88,6 @@ function Calendarma() {
         />
 
         <Button
-
           icon={<Icon name="home" size={30} color="#9DD9E7" />}
           buttonStyle={styles.button}
           onPress={handlepressHome}
@@ -87,34 +102,28 @@ const styles = StyleSheet.create({
     marginTop: 50,
     marginLeft: 20,
     marginBottom: 20,
-    fontWeight: '500',
+    fontWeight: "500",
     fontSize: 25,
-
   },
-  body: {
-
-  },
+  body: {},
   container: {
     paddingHorizontal: 10,
-    height: '100%',
+    height: "100%",
     backgroundColor: "white",
-
   },
   button: {
-    backgroundColor: 'white',
-    borderColor: '#9DD9E7',
+    backgroundColor: "white",
+    borderColor: "#9DD9E7",
     borderWidth: 3,
-    borderRadius: 50
+    borderRadius: 50,
   },
   bottomButtons: {
-
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    position: 'relative',
-    width: '100%',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    position: "relative",
+    width: "100%",
     bottom: "-50%",
-
   },
 });
 
