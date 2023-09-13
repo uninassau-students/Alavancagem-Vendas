@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, Image, View } from "react-native";
+import { StyleSheet, Text, Image, View, TouchableOpacity } from "react-native";
 import { NativeBaseProvider, Button } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
@@ -13,6 +13,8 @@ import {
 //
 
 function Nicho() {
+
+
   const [fontsLoaded] = useFonts({
     Roboto_400Regular,
     Roboto_500Medium,
@@ -44,32 +46,36 @@ function Nicho() {
         </Text>
         <View style={styles.containerimg}>
           <View style={styles.containerimgtxt}>
-            <Image
-              source={require("../../assets/Frame1.jpg")}
-              style={{
-                width: 150,
-                height: 200,
-                marginTop: 0,
-                marginBottom: 0,
-                resizeMode: "stretch",
-                marginRight: 15,
-              }}
-            />
+            <TouchableOpacity onPress={handlePress}>
+              <Image
+                source={require("../../assets/Frame1.jpg")}
+                style={{
+                  width: 150,
+                  height: 200,
+                  marginTop: 0,
+                  marginBottom: 0,
+                  resizeMode: "stretch",
+                  marginRight: 15,
+                }}
+              />
+            </TouchableOpacity>
             <Text style={[styles.txt, { marginRight: 15, width: "90%" }]}>
               Papelaria
             </Text>
           </View>
           <View style={styles.containerimgtxt}>
-            <Image
-              source={require("../../assets/Frame45.png")}
-              style={{
-                width: 150,
-                height: 200,
-                marginTop: 0,
-                marginBottom: 0,
-                resizeMode: "stretch",
-              }}
-            />
+            <TouchableOpacity onPress={handlePress}>
+              <Image
+                source={require("../../assets/Frame45.png")}
+                style={{
+                  width: 150,
+                  height: 200,
+                  marginTop: 0,
+                  marginBottom: 0,
+                  resizeMode: "stretch",
+                }}
+              />
+            </TouchableOpacity>
             <Text style={[styles.txt, { width: "100%" }]}>Roupas</Text>
           </View>
         </View>
