@@ -1,20 +1,15 @@
 import React from "react";
 import { StyleSheet, Text, Image, View, TouchableOpacity } from "react-native";
-import { NativeBaseProvider, Button } from "native-base";
+import { NativeBaseProvider } from "native-base";
 import { useNavigation } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
-import { THEME } from "../styles/theme";
 import {
   useFonts,
   Roboto_400Regular,
   Roboto_500Medium,
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
-//
 
 function Nicho() {
-
-
   const [fontsLoaded] = useFonts({
     Roboto_400Regular,
     Roboto_500Medium,
@@ -28,11 +23,11 @@ function Nicho() {
   };
 
   return (
-    <NativeBaseProvider theme={THEME}>
+    <NativeBaseProvider >
       <View style={styles.container}>
         <Image
           style={{ position: "absolute", right: 80, top: 45 }}
-          source={require("../../assets/aviao.png")}
+          source={require("../assets1/aviao.png")}
         ></Image>
         <Text
           style={{
@@ -48,10 +43,10 @@ function Nicho() {
           <View style={styles.containerimgtxt}>
             <TouchableOpacity onPress={handlePress}>
               <Image
-                source={require("../../assets/Frame1.jpg")}
+                source={require("../assets1/papelaria.png")}
                 style={{
                   width: 150,
-                  height: 200,
+                  height: 160,
                   marginTop: 0,
                   marginBottom: 0,
                   resizeMode: "stretch",
@@ -66,13 +61,12 @@ function Nicho() {
           <View style={styles.containerimgtxt}>
             <TouchableOpacity onPress={handlePress}>
               <Image
-                source={require("../../assets/Frame45.png")}
+                source={require("../assets1/roupas.png")}
                 style={{
                   width: 150,
-                  height: 200,
+                  height: 160,
                   marginTop: 0,
                   marginBottom: 0,
-                  resizeMode: "stretch",
                 }}
               />
             </TouchableOpacity>
@@ -80,17 +74,14 @@ function Nicho() {
           </View>
         </View>
         <View style={styles.containerdown}>
-          <Text style={{ fontWeight: "500", fontSize: 16, marginTop: "12%" }}>
+          <Text style={{ fontWeight: "500", fontSize: 19, marginTop: "12%" }}>
             Com a sua escolha poderemos criar
           </Text>
-          <Text style={{ fontWeight: "500", fontSize: 16 }}>
+          <Text style={{ fontWeight: "500", fontSize: 19 }}>
             {" "}
             uma série de atividades para você.
           </Text>
         </View>
-        <Button style={styles.button} onPress={handlePress}>
-          <Image source={require("../../assets/Vector.png")} />
-        </Button>
       </View>
     </NativeBaseProvider>
   );
@@ -125,17 +116,5 @@ const styles = StyleSheet.create({
     marginTop: 0,
     paddingVertical: 15,
   },
-  button: {
-    position: "absolute",
-    right: 0,
-    bottom: 0,
-    marginBottom: 25,
-    marginRight: 25,
-    width: 50,
-    height: 50,
-    borderRadius: 50,
-    backgroundColor: "#9DD9E7",
-  },
 });
-
 export default Nicho;

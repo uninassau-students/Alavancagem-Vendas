@@ -49,7 +49,7 @@ const SelectCalendar = () => {
         <View style={styles.imageContainer}>
           <TouchableOpacity style={{}} onPress={handlePressJ}>
             <Image
-              source={require("../../assets/imgcalendar/calendar2.png")}
+              source={require("../assets1/CalendarPng/janeiro.png")}
               style={styles.image}
             />
           </TouchableOpacity>
@@ -59,7 +59,7 @@ const SelectCalendar = () => {
         <View style={styles.imageContainer}>
           <TouchableOpacity style={{}} onPress={handlePressF}>
             <Image
-              source={require("../../assets/imgcalendar/calendar1.png")}
+              source={require("../assets1/CalendarPng/fevereiro.png")}
               style={styles.image}
             />
           </TouchableOpacity>
@@ -70,7 +70,7 @@ const SelectCalendar = () => {
         <View style={styles.imageContainer}>
           <TouchableOpacity style={{}} onPress={handlePressM}>
             <Image
-              source={require("../../assets/imgcalendar/ca5.png")}
+              source={require("../assets1/CalendarPng/marco.png")}
               style={styles.image}
             />
           </TouchableOpacity>
@@ -79,7 +79,7 @@ const SelectCalendar = () => {
         <View style={styles.imageContainer}>
           <TouchableOpacity style={{}} onPress={handlePressA}>
             <Image
-              source={require("../../assets/imgcalendar/ca4.png")}
+              source={require("../assets1/CalendarPng/abril.png")}
               style={styles.image}
             />
           </TouchableOpacity>
@@ -90,7 +90,7 @@ const SelectCalendar = () => {
         <View style={styles.imageContainer}>
           <TouchableOpacity style={{}} onPress={handlePressMA}>
             <Image
-              source={require("../../assets/imgcalendar/ca6.png")}
+              source={require("../assets1/CalendarPng/maio.png")}
               style={styles.image}
             />
           </TouchableOpacity>
@@ -99,7 +99,7 @@ const SelectCalendar = () => {
         <View style={styles.imageContainer}>
           <TouchableOpacity style={{}} onPress={handlePressJUN}>
             <Image
-              source={require("../../assets/imgcalendar/ca3.png")}
+              source={require("../assets1/CalendarPng/junho.png")}
               style={styles.image}
             />
           </TouchableOpacity>
@@ -125,6 +125,7 @@ const SelectCalendar = () => {
 };
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 30,
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
@@ -137,12 +138,13 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     alignItems: "center",
-    marginHorizontal: 10,
+    marginHorizontal: 15,
+    marginVertical: 8,
   },
   image: {
-    width: 170,
-    height: 170,
-    resizeMode: "cover",
+    width: 140,
+    height: 140,
+    resizeMode: "contain",
   },
   text: {
     marginTop: 5,

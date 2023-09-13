@@ -3,15 +3,14 @@ import { StyleSheet, View, Text } from "react-native";
 import { Calendar } from "react-native-calendars";
 import { Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
+import { MarkedDates } from "react-native-calendars/src/types";
 interface Day {
   dateString: string;
 }
 
-function Calendara() {
-  const [selectedDate, setSelectedDate] = useState<string | null>("2023-04-01");
-
+function Calendarma() {
+  const [selectedDate, setSelectedDate] = useState<string | null>("2023-05-01");
   const navigation = useNavigation();
 
   const handlepress = () => {
@@ -36,7 +35,7 @@ function Calendara() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.txt}>Abril</Text>
+      <Text style={styles.txt}>Maio</Text>
       <Calendar
         onDayPress={onDayPress}
         markedDates={markedDates}
@@ -50,9 +49,9 @@ function Calendara() {
           dotColor: "blue",
           selectedDotColor: "white",
         }}
-        current={"2023-04-01"}
-        minDate={"2023-03-04"}
-        maxDate={"2023-04-30"}
+        current={"2023-05-01"}
+        minDate={"2023-05-01"}
+        maxDate={"2023-05-30"}
         hideArrows={true}
         hideMonthTitle={true}
         renderHeader={renderHeader}
@@ -128,4 +127,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Calendara;
+export default Calendarma;

@@ -9,8 +9,9 @@ interface Day {
   dateString: string;
 }
 
-function Calendarm() {
-  const [selectedDate, setSelectedDate] = useState<string | null>("2023-03-01");
+function Calendara() {
+  const [selectedDate, setSelectedDate] = useState<string | null>("2023-04-01");
+
   const navigation = useNavigation();
 
   const handlepress = () => {
@@ -22,6 +23,7 @@ function Calendarm() {
     console.log("Home");
     navigation.navigate("Login");
   };
+
   const onDayPress = (day: Day) => {
     setSelectedDate(day.dateString);
   };
@@ -34,7 +36,7 @@ function Calendarm() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.txt}>Março</Text>
+      <Text style={styles.txt}>Abril</Text>
       <Calendar
         onDayPress={onDayPress}
         markedDates={markedDates}
@@ -48,9 +50,9 @@ function Calendarm() {
           dotColor: "blue",
           selectedDotColor: "white",
         }}
-        current={"2023-03-01"}
-        minDate={"2023-02-01"}
-        maxDate={"2023-03-30"}
+        current={"2023-04-01"}
+        minDate={"2023-03-04"}
+        maxDate={"2023-04-30"}
         hideArrows={true}
         hideMonthTitle={true}
         renderHeader={renderHeader}
@@ -75,7 +77,7 @@ function Calendarm() {
           paddingTop: 80,
         }}
       >
-        {" "}
+        {""}
         Você realizará uma live mostrando seus produtos
       </Text>
       <View style={styles.bottomButtons}>
@@ -122,8 +124,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     position: "relative",
     width: "100%",
-    bottom: "-50%",
+    bottom: "-30%",
   },
 });
 
-export default Calendarm;
+export default Calendara;

@@ -3,14 +3,14 @@ import { StyleSheet, View, Text } from "react-native";
 import { Calendar } from "react-native-calendars";
 import { Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import { useNavigation } from "@react-navigation/native";
 import { MarkedDates } from "react-native-calendars/src/types";
+import { useNavigation } from "@react-navigation/native";
 interface Day {
   dateString: string;
 }
 
-function Calendarma() {
-  const [selectedDate, setSelectedDate] = useState<string | null>("2023-05-01");
+function Calendarm() {
+  const [selectedDate, setSelectedDate] = useState<string | null>("2023-03-01");
   const navigation = useNavigation();
 
   const handlepress = () => {
@@ -22,7 +22,6 @@ function Calendarma() {
     console.log("Home");
     navigation.navigate("Login");
   };
-
   const onDayPress = (day: Day) => {
     setSelectedDate(day.dateString);
   };
@@ -35,7 +34,7 @@ function Calendarma() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.txt}>Maio</Text>
+      <Text style={styles.txt}>Março</Text>
       <Calendar
         onDayPress={onDayPress}
         markedDates={markedDates}
@@ -49,9 +48,9 @@ function Calendarma() {
           dotColor: "blue",
           selectedDotColor: "white",
         }}
-        current={"2023-05-01"}
-        minDate={"2023-05-01"}
-        maxDate={"2023-05-30"}
+        current={"2023-03-01"}
+        minDate={"2023-02-01"}
+        maxDate={"2023-03-30"}
         hideArrows={true}
         hideMonthTitle={true}
         renderHeader={renderHeader}
@@ -123,8 +122,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     position: "relative",
     width: "100%",
-    bottom: "-50%",
+    bottom: "-40%",
   },
 });
 
-export default Calendarma;
+export default Calendarm;

@@ -5,13 +5,12 @@ import { Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
-
 interface Day {
   dateString: string;
 }
 
-function Calendarf() {
-  const [selectedDate, setSelectedDate] = useState<string | null>("2023-02-02");
+function Calendarj() {
+  const [selectedDate, setSelectedDate] = useState<string | null>("2023-01-01");
   const navigation = useNavigation();
 
   const handlepress = () => {
@@ -23,7 +22,6 @@ function Calendarf() {
     console.log("Home");
     navigation.navigate("Login");
   };
-
   const onDayPress = (day: Day) => {
     setSelectedDate(day.dateString);
   };
@@ -36,7 +34,7 @@ function Calendarf() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.txt}>Fevereiro</Text>
+      <Text style={styles.txt}>Janeiro</Text>
       <Calendar
         onDayPress={onDayPress}
         markedDates={markedDates}
@@ -50,9 +48,9 @@ function Calendarf() {
           dotColor: "blue",
           selectedDotColor: "white",
         }}
-        current={"2023-02-02"}
-        minDate={"2023-01-02"}
-        maxDate={"2023-02-30"}
+        current={"2023-01-01"}
+        minDate={"2023-01-01"}
+        maxDate={"2023-01-30"}
         hideArrows={true}
         hideMonthTitle={true}
         renderHeader={renderHeader}
@@ -124,8 +122,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     position: "relative",
     width: "100%",
-    bottom: "-50%",
+    bottom: "-40%",
   },
 });
 
-export default Calendarf;
+export default Calendarj;

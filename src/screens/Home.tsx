@@ -3,7 +3,6 @@ import { StyleSheet, Text, Image, View } from "react-native";
 import { NativeBaseProvider, Button } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import { THEME } from "../styles/theme";
 import {
   useFonts,
   Roboto_400Regular,
@@ -26,10 +25,10 @@ function Home() {
   };
 
   return (
-    <NativeBaseProvider theme={THEME}>
+    <NativeBaseProvider>
       <View style={styles.container}>
         <Image
-          source={require("../../assets/bemvindo.png")}
+          source={require("../assets1/bemvindo.png")}
           style={{
             width: "100%",
             height: "50%",
@@ -39,7 +38,7 @@ function Home() {
         />
         <View style={styles.containerhome}>
           <Text style={{ fontSize: 40, paddingTop: 35, fontWeight: "400" }}>
-            Bem-vindo
+            Bem-vindo(a)
           </Text>
           <Text
             style={{

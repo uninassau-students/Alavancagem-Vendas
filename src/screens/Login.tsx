@@ -1,15 +1,14 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import { NativeBaseProvider, Button, useTheme } from "native-base";
+import { Button } from "native-base";
 import { StyleSheet, Text, View, TextInput, Image } from "react-native";
 
 function LoginHome() {
-  const theme = useTheme();
   const navigation = useNavigation();
 
   const handlePressRegistrar = () => {
-    console.log("INDO PRA REGISTRAr");
+    console.log("INDO PRA REGISTRAR");
     navigation.navigate("Registrar");
   };
 
@@ -29,7 +28,7 @@ function LoginHome() {
           marginLeft: 15,
         }}
       >
-        Seja bem-vindo de volta!
+        Bem-vindo(a) de volta!
       </Text>
       <Text
         style={{
@@ -39,7 +38,7 @@ function LoginHome() {
           marginLeft: 15,
         }}
       >
-        Por favor, inserir email e senha.
+        Por favor, insira seu email e senha.
       </Text>
       <View style={styles.containerInput}>
         <TextInput
@@ -74,25 +73,25 @@ function LoginHome() {
         </Button>
 
         <View style={styles.containerActiveGoogle}>
-          <Text style={{ fontSize: 15, marginBottom: 5 }}>
+          <Text style={{ fontSize: 18, marginBottom: 5 }}>
             {" "}
             Não tem conta ainda?{" "}
             <Text
-              style={{ fontSize: 15, fontWeight: "600", paddingLeft: 5 }}
+              style={{ fontSize: 19, fontWeight: "600", paddingLeft: 5 }}
               onPress={handlePressRegistrar}
             >
-              Registre-se
+              Clique aqui
             </Text>
           </Text>
-          <Text style={{ fontSize: 15 }}>Ou entrar com </Text>
+          <Text style={{ fontSize: 18 }}>para se registrar ou entre com o</Text>
 
           <Image
-            source={require("../../assets/google_ic.png")}
-            style={{ width: 28, height: 28, marginTop: 60 }}
+            source={require("../assets1/google.png")}
+            style={{ width: 45, height: 45, marginTop: 40 }}
+            alt="google"
           />
         </View>
       </View>
-
       <StatusBar style="auto" />
     </View>
   );
@@ -115,9 +114,9 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
   buttonText: {
-    padding: 10,
+    padding: 7,
     color: "white",
-    fontSize: 15,
+    fontSize: 22,
   },
   containerActiveGoogle: {
     fontSize: 30,

@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     position: "relative",
     width: "100%",
-    bottom: "-50%",
+    bottom: "-40%",
   },
 });
 

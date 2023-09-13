@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { Box, Center, Heading, Text, VStack, Image } from "native-base";
-import { FontAwesome } from "@expo/vector-icons";
 import { Input } from "../components/input";
 import { Button } from "../components/button";
 import { Pressable } from "react-native";
-import {useNavigation} from '@react-navigation/native'
+import { useNavigation } from "@react-navigation/native";
 
 export function Register() {
-
-  const navigation = useNavigation()
-  const handlePressLogin= () => {
-    navigation.navigate('Login')
-  }
+  const navigation = useNavigation();
+  const handlePressLogin = () => {
+    navigation.navigate("Login");
+  };
 
   return (
     <VStack flex={1} bgColor="#fff">
@@ -22,7 +20,7 @@ export function Register() {
           marginTop={5}
           marginBottom={5}
           fontSize={30}
-          fontWeight={"extrabold"}
+          fontWeight={"bold"}
         >
           Crie sua conta
         </Heading>
@@ -42,9 +40,12 @@ export function Register() {
         </Text>
         <Pressable>
           <Image
-            source={require("../../assets/Google_Button.png")}
+            source={require("../assets1/google.png")}
+            style={{
+              width: 45,
+              height: 45,
+            }}
             alt="google"
-            size={16}
           />
         </Pressable>
       </Box>
