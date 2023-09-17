@@ -42,7 +42,7 @@ export function Register() {
         </Text>
         <Pressable>
           <Image
-            source={require("../../assets/Google_Button.png")}
+            source={require('../assets1/google.png')}
             alt="google"
             size={16}
           />
