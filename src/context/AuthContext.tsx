@@ -1,10 +1,19 @@
-import { ReactNode,createContext, useState } from "react";
+import { ReactNode,createContext, useEffect, useState } from "react";
 import {IAuthContextDataProps, IAuthProviderProps, TokenTypes, UserDataProps} from '../../@types/types'
-import { LoginRequest } from "./utils";
+import { LoginRequest, getUserLocalStorage, serUserLocalStorage } from "./utils";
 
 
 
 export const AuthContext = createContext({} as IAuthContextDataProps)
+
+
+useEffect(()=> {
+    const user = getUserLocalStorage()
+
+    if(user) {
+        setUserData(user);
+    }
+})
 
 export function AuthContextProvider({children}: IAuthProviderProps){
     const[loading,setLoading] = useState(false);
@@ -18,10 +27,12 @@ export function AuthContextProvider({children}: IAuthProviderProps){
         const payload = { token: response.token, email }
 
         setUserData(payload);
+        serUserLocalStorage(payload);
     }
 
     function logout() {
         setUserData(null);
+        serUserLocalStorage(null);
     }
 
     return(
