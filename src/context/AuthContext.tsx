@@ -1,5 +1,6 @@
 import { ReactNode,createContext, useState } from "react";
-import {IAuthContextDataProps, IAuthProviderProps} from '../../@types/types'
+import {IAuthContextDataProps, IAuthProviderProps, TokenTypes, UserDataProps} from '../../@types/types'
+import { LoginRequest } from "./utils";
 
 
 
@@ -7,11 +8,24 @@ export const AuthContext = createContext({} as IAuthContextDataProps)
 
 export function AuthContextProvider({children}: IAuthProviderProps){
     const[loading,setLoading] = useState(false);
-    const[globalLoading,setGlobalLoading] =useState(false);
-    const [useData,setUserData] = useState()
+    const[globalLoading,setGlobalLoading] = useState(false);
+    const [userData,setUserData] = useState<UserDataProps | null>({} as UserDataProps);
+    const [token,setToken] = useState<TokenTypes>()
+
+    async function authenticate(email:string, password: string) {
+        const response = await LoginRequest(email,password)   
+
+        const payload = { token: response.token, email }
+
+        setUserData(payload);
+    }
+
+    function logout() {
+        setUserData(null);
+    }
 
     return(
-        <AuthContext.Provider value={{}}>
+        <AuthContext.Provider value={{...userData, authenticate,logout}}>
             {children}
         </AuthContext.Provider>
     )
