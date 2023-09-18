@@ -1,7 +1,8 @@
 import { ReactNode} from "react";
 
 export interface IAuthContextDataProps {
-    
+    authenticate: (email:string, password: string) => Promise<void>
+    logout: ()=> void;
 }
 
 export interface IAuthProviderProps {
@@ -9,7 +10,11 @@ export interface IAuthProviderProps {
 }
 
 export interface UserDataProps {
-    username: string;
-    password: string;
+    password?: string;
     email: string;
+}
+
+export interface TokenTypes {
+    token: string;
+    refresh: string;
 }
