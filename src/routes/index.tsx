@@ -6,11 +6,10 @@ import LoginHome from "../screens/Login";
 
 export function Routes() {
 
-    const auth = false;
     return(
         <Box flex={1}>
             <NavigationContainer>
-                {auth ? <AppRoutes /> : <LoginHome />}
+                <AppRoutes /> 
             </NavigationContainer>
         </Box>
     )

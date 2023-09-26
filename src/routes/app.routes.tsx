@@ -44,6 +44,7 @@ export default function AppRoutes() {
             component={LoginHome}
             options={{
               header: () => null,
+             
             }}
           />
           <Stack.Screen

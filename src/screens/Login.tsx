@@ -1,8 +1,11 @@
 import React from "react";
+import * as Google from 'expo-auth-session/providers/google';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as WebBrowser from 'expo-web-browser';
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { Button } from "native-base";
-import { StyleSheet, Text, View, TextInput, Image } from "react-native";
+import { StyleSheet, Text, View, TextInput, Image } from "react-native"
 
 function LoginHome() {
   const navigation = useNavigation();
@@ -12,10 +15,67 @@ function LoginHome() {
     navigation.navigate("Registrar");
   };
 
-  const handlePress = () => {
-    console.log("INDO PRA NICHO");
-    navigation.navigate("Nicho");
-  };
+/*const handlePress = () => {
+  console.log("INDO PRA NICHO");
+  navigation.navigate("Nicho");
+};*/
+  // PARTE DE AUTENTICAÇÃO>>>>>>>>>>
+  const [userInfo, setUserInfo] = React.useState(null);
+  const [request, response, promptAsync] = Google.useAuthRequest({
+      androidClientId: "685725701624-ss5ib573u1scfa408fsaq0rjs5b4votf.apps.googleusercontent.com",
+      clientId:"685725701624-ss5ib573u1scfa408fsaq0rjs5b4votf.apps.googleusercontent.com",
+      iosClientId: "",
+      webClientId: "685725701624-n9mdprlcvn990aoclpvthtoi3f13amq9.apps.googleusercontent.com"
+  })
+
+  React.useEffect(() =>{
+    if(response){
+      HandleLoginGoggle();
+    }
+    
+  },[response]);
+
+
+  async function HandleLoginGoggle() {
+    const user = await AsyncStorage.getItem("@user");
+    if (!user) {
+      if (response?.type === "success" && response.authentication) {
+        await getUserInfo(response.authentication.accessToken);
+      }
+    } else {
+      if (user) {
+        setUserInfo(JSON.parse(user));
+      }
+    }
+    return null; // Retorna null ou outro valor apropriado, dependendo do seu caso.
+  }
+  
+  
+
+  const getUserInfo = async (token:any)=>{
+      if(!token) return;
+      try {
+          const response = await fetch (
+          "https://www.googleapis.com/userinfo/v2/me",
+          {
+              headers:{ Authorization: `Bearer ${token}`},
+          }
+        );
+          const user = await response.json();
+          await AsyncStorage.setItem("@user", JSON.stringify(user));
+          return user
+          }catch(error){
+              console.log(error+"ERROOOOO ")
+              return null
+          } 
+        }
+          
+      
+ 
+
+
+  
+
 
   return (
     <View style={styles.container}>
@@ -68,9 +128,14 @@ function LoginHome() {
         />
       </View>
       <View style={styles.containerActive}>
-        <Button style={styles.button} onPress={handlePress}>
+        <Button style={styles.button}>
           <Text style={styles.buttonText}>Login</Text>
         </Button>
+        <View>
+        <Button onPress={() => promptAsync()}>
+    <Text>LOGIN GOOGLE</Text>
+    </Button>
+        </View>
 
         <View style={styles.containerActiveGoogle}>
           <Text style={{ fontSize: 18, marginBottom: 5 }}>
@@ -83,6 +148,7 @@ function LoginHome() {
               Clique aqui
             </Text>
           </Text>
+          
           <Text style={{ fontSize: 18 }}>para se registrar ou entre com o</Text>
 
           <Image
@@ -93,9 +159,11 @@ function LoginHome() {
         </View>
       </View>
       <StatusBar style="auto" />
+      
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -124,4 +192,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
 export default LoginHome;

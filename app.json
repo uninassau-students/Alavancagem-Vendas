@@ -4,6 +4,7 @@
     "slug": "AL-VENDAS",
     "version": "1.0.0",
     "orientation": "portrait",
+    "scheme": "",
     "icon": "./assets1/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -21,10 +22,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets1/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.ALVENDAS"
     },
     "web": {
       "favicon": "./assets1/favicon.png"
+    },
+    "owner": "pedro123expo",
+    "extra": {
+      "eas": {
+        "projectId": "7f90517a-0a7d-407c-9647-dda1143927fc"
+      }
     }
   }
 }

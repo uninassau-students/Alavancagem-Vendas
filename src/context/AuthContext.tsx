@@ -7,13 +7,7 @@ import { LoginRequest, getUserLocalStorage, serUserLocalStorage } from "./utils"
 export const AuthContext = createContext({} as IAuthContextDataProps)
 
 
-useEffect(()=> {
-    const user = getUserLocalStorage()
 
-    if(user) {
-        setUserData(user);
-    }
-})
 
 export function AuthContextProvider({children}: IAuthProviderProps){
     const[loading,setLoading] = useState(false);
@@ -36,8 +30,6 @@ export function AuthContextProvider({children}: IAuthProviderProps){
     }
 
     return(
-        <AuthContext.Provider value={{...userData, authenticate,logout}}>
-            {children}
-        </AuthContext.Provider>
+    <div></div>
     )
 }
