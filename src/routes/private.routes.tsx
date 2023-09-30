@@ -11,7 +11,7 @@ import {
 import Home from "../screens/Home";
 import LoginHome from "../screens/Login";
 import Nicho from "../screens/SelectNicho";
-import Registrar from "../screens/register";
+import Register from "../screens/register";
 import SelectCalendar from "../screens/SelectCalendar";
 import Calendarj from "../screens/calendar/CalendarJaneiro";
 import Calendarf from "../screens/calendar/CalendarFevereiro";
@@ -37,7 +37,13 @@ export default function PrivateRoutes() {
           header: () => null,
         }}
       />
-
+      <Stack.Screen
+        name="Registrar"
+        component={Register}
+        options={{
+          header: () => null,
+        }}
+      />
       <Stack.Screen
         name="Login"
         component={LoginHome}

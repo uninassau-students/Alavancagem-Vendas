@@ -23,9 +23,9 @@ function LoginHome() {
   async function handleSignIn() {
     try {
       setLoading(true);
-      const response = await auth.LoginToken(email, password);
+      const isAuthenticated = await auth.LoginToken(email, password);
 
-      if (auth.signed) {
+      if (isAuthenticated) {
         navigation.navigate("Nicho");
       }
     } catch (error) {
@@ -33,6 +33,7 @@ function LoginHome() {
     } finally {
       setLoading(false);
     }
+    
   }
 
   return (

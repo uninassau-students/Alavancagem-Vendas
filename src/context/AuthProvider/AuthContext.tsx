@@ -12,7 +12,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export const AuthContext = createContext<IAuthProps>({} as IAuthProps);
 
 export const AuthProvider = ({ children }: IAuthProviderProps) => {
-  const [user, setUser] = useState<IUser | null>();
+  const [user, setUser] = useState<IUser | null>(null);
 
   // useEffect(() => {
   //   async function loadUser() {
@@ -67,23 +67,30 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
   }
 
   const LoginToken = async (email: string, password: string) => {
-    const response = await api.post("/auth/user", { email, password });
+    const response = await api.post("/auth", { email, password });
     if (response.data.error) {
       alert(response.data.error);
+      return false;
     } else {
       setUser(response.data.user);
-      api.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${response.data.token}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${response.data.token}`;
       AsyncStorage.setItem("@Auth:token", response.data.token);
       const json = JSON.stringify(response.data);
       AsyncStorage.setItem("@Auth:user", json);
+      return true;
     }
-  };
+};
 
   return (
     <AuthContext.Provider
-      value={{ ...user, authenticate, logout, LoginToken, signed: !!user }}
+      value={{
+        user,
+
+        authenticate,
+        logout,
+        LoginToken,
+        signed: !!user,
+      }}
     >
       {children}
     </AuthContext.Provider>

@@ -8,6 +8,10 @@ import {
   Roboto_500Medium,
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
+import { useAuth } from "../context/useAuth";
+
+
+
 
 function Nicho() {
   const [fontsLoaded] = useFonts({
@@ -16,11 +20,17 @@ function Nicho() {
     Roboto_700Bold,
   });
 
+  const {user} = useAuth();
+
+
+
   const navigation = useNavigation();
 
   const handlePress = () => {
     navigation.navigate("SelectCalendar");
   };
+
+  console.log(user)
 
   return (
     <NativeBaseProvider >
@@ -39,6 +49,13 @@ function Nicho() {
         >
           ESCOLHA SEU NICHO
         </Text>
+          <View>
+            <Text>
+              {user && user.email}
+              
+
+            </Text>
+          </View>
         <View style={styles.containerimg}>
           <View style={styles.containerimgtxt}>
             <TouchableOpacity onPress={handlePress}>
@@ -86,6 +103,7 @@ function Nicho() {
     </NativeBaseProvider>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

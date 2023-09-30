@@ -11,7 +11,7 @@ export function Routes() {
   return (
     <Box flex={1}>
       <NavigationContainer>
-        {signed ? <PrivateRoutes /> : <LoginHome />}
+        {signed ? <PrivateRoutes /> : <AppRoutes />}
       </NavigationContainer>
     </Box>
   );
