@@ -1,17 +1,18 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { Box } from "native-base";
-import AppRoutes from "./app.routes";
+
+import { useAuth } from "../context/useAuth";
+import PrivateRoutes from "./private.routes";
+import { AppRoutes } from "./app.routes";
 import LoginHome from "../screens/Login";
 
-
 export function Routes() {
-
-    const auth = false;
-    return(
-        <Box flex={1}>
-            <NavigationContainer>
-                {auth ? <AppRoutes /> : <LoginHome />}
-            </NavigationContainer>
-        </Box>
-    )
+  const { signed } = useAuth();
+  return (
+    <Box flex={1}>
+      <NavigationContainer>
+        {signed ? <PrivateRoutes /> : <LoginHome />}
+      </NavigationContainer>
+    </Box>
+  );
 }

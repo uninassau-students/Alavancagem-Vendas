@@ -1,21 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import { Button } from "native-base";
+import { Button, useToast } from "native-base";
 import { StyleSheet, Text, View, TextInput, Image } from "react-native";
+import { useAuth } from "../context/useAuth";
 
 function LoginHome() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setLoading] = useState(false);
   const navigation = useNavigation();
+  const toast = useToast();
+
+  const auth = useAuth();
 
   const handlePressRegistrar = () => {
-    console.log("INDO PRA REGISTRAR");
     navigation.navigate("Registrar");
   };
 
-  const handlePress = () => {
-    console.log("INDO PRA NICHO");
-    navigation.navigate("Nicho");
-  };
+  const { LoginToken } = auth;
+
+  async function handleSignIn() {
+    try {
+      setLoading(true);
+      const response = await auth.LoginToken(email, password);
+
+      if (auth.signed) {
+        navigation.navigate("Nicho");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -46,11 +64,13 @@ function LoginHome() {
           style={{
             fontSize: 16,
             borderWidth: 1,
-            color: "#8391A1",
+            color: "#121212",
             borderColor: "#E8ECF4",
             padding: 10,
             width: "100%",
           }}
+          onChangeText={(texto) => setEmail(texto)}
+          value={email}
         />
         <TextInput
           placeholder="Sua senha"
@@ -58,17 +78,23 @@ function LoginHome() {
           style={{
             fontSize: 16,
             borderWidth: 1,
-            color: "#8391A1",
+            color: "#121212",
             borderColor: "#E8ECF4",
             padding: 10,
             marginTop: 15,
             width: "100%",
             marginBottom: 35,
           }}
+          onChangeText={(texto) => setPassword(texto)}
+          value={password}
         />
       </View>
       <View style={styles.containerActive}>
-        <Button style={styles.button} onPress={handlePress}>
+        <Button
+          style={styles.button}
+          onPress={handleSignIn}
+          isLoading={isLoading}
+        >
           <Text style={styles.buttonText}>Login</Text>
         </Button>
 
