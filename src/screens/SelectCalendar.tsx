@@ -4,6 +4,7 @@ import { Button } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { useNavigation } from "@react-navigation/native";
+import { Center, HStack } from "native-base";
 
 const SelectCalendar = () => {
   const navigation = useNavigation();
@@ -44,68 +45,15 @@ const SelectCalendar = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.row}>
-        <View style={styles.imageContainer}>
-          <TouchableOpacity style={{}} onPress={handlePressJ}>
-            <Image
-              source={require("../assets1/CalendarPng/janeiro.png")}
-              style={styles.image}
-            />
-          </TouchableOpacity>
-          <Text style={styles.text}>Janeiro</Text>
-        </View>
+    <HStack flex={1} justifyContent={"center"}>
+      <TouchableOpacity style={{}} onPress={handlePressJ}>
+        <Image
+          source={require("../assets1/CalendarPng/janeiro.png")}
+          style={styles.image}
+        />
+      </TouchableOpacity>
+      <Text style={styles.text}>Janeiro</Text>
 
-        <View style={styles.imageContainer}>
-          <TouchableOpacity style={{}} onPress={handlePressF}>
-            <Image
-              source={require("../assets1/CalendarPng/fevereiro.png")}
-              style={styles.image}
-            />
-          </TouchableOpacity>
-          <Text style={styles.text}>Fevereiro</Text>
-        </View>
-      </View>
-      <View style={styles.row}>
-        <View style={styles.imageContainer}>
-          <TouchableOpacity style={{}} onPress={handlePressM}>
-            <Image
-              source={require("../assets1/CalendarPng/marco.png")}
-              style={styles.image}
-            />
-          </TouchableOpacity>
-          <Text style={styles.text}>Março</Text>
-        </View>
-        <View style={styles.imageContainer}>
-          <TouchableOpacity style={{}} onPress={handlePressA}>
-            <Image
-              source={require("../assets1/CalendarPng/abril.png")}
-              style={styles.image}
-            />
-          </TouchableOpacity>
-          <Text style={styles.text}>Abril</Text>
-        </View>
-      </View>
-      <View style={styles.row}>
-        <View style={styles.imageContainer}>
-          <TouchableOpacity style={{}} onPress={handlePressMA}>
-            <Image
-              source={require("../assets1/CalendarPng/maio.png")}
-              style={styles.image}
-            />
-          </TouchableOpacity>
-          <Text style={styles.text}>Maio</Text>
-        </View>
-        <View style={styles.imageContainer}>
-          <TouchableOpacity style={{}} onPress={handlePressJUN}>
-            <Image
-              source={require("../assets1/CalendarPng/junho.png")}
-              style={styles.image}
-            />
-          </TouchableOpacity>
-          <Text style={styles.text}>Junho</Text>
-        </View>
-      </View>
       <View style={styles.bottomButtons}>
         <Button
           icon={<Icon name="keyboard-arrow-left" size={30} color="#9DD9E7" />}
@@ -113,14 +61,13 @@ const SelectCalendar = () => {
           buttonStyle={styles.button}
           onPress={handlepress}
         />
-
         <Button
           icon={<Icon name="home" size={30} color="#9DD9E7" />}
           buttonStyle={styles.button}
           onPress={handlepressHome}
         />
       </View>
-    </View>
+    </HStack>
   );
 };
 const styles = StyleSheet.create({

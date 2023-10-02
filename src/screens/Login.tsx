@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { Button, useToast } from "native-base";
@@ -33,7 +33,6 @@ function LoginHome() {
     } finally {
       setLoading(false);
     }
-    
   }
 
   return (

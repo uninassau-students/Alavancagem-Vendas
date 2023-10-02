@@ -67,19 +67,21 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
   }
 
   const LoginToken = async (email: string, password: string) => {
-    const response = await api.post("/auth", { email, password });
+    const response = await api.post("/auth/user", { email, password });
     if (response.data.error) {
       alert(response.data.error);
       return false;
     } else {
       setUser(response.data.user);
-      api.defaults.headers.common["Authorization"] = `Bearer ${response.data.token}`;
+      api.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${response.data.token}`;
       AsyncStorage.setItem("@Auth:token", response.data.token);
       const json = JSON.stringify(response.data);
       AsyncStorage.setItem("@Auth:user", json);
       return true;
     }
-};
+  };
 
   return (
     <AuthContext.Provider
