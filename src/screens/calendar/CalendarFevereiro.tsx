@@ -6,6 +6,8 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
 import { LocaleConfig } from "react-native-calendars";
+import { dailyTasksFevereiro } from '../../lib/task'
+import day from "react-native-calendars/src/calendar/day";
 
 interface Day {
   dateString: string;
@@ -70,7 +72,16 @@ function Calendarf() {
 
   const onDayPress = (day: Day) => {
     setSelectedDate(day.dateString);
+
+    // Verifique se há uma tarefa para o dia clicado
+    if (dailyTasksFevereiro[day.dateString]) {
+      setDailyTask(dailyTasksFevereiro[day.dateString]);
+    } else {
+      // Se não houver tarefa definida, você pode definir uma mensagem padrão ou deixá-la vazia
+      setDailyTask("FFWEFQWF");
+    }
   };
+
 
   const markedDates: MarkedDates = {};
   if (selectedDate) {
@@ -173,3 +184,7 @@ const styles = StyleSheet.create({
 });
 
 export default Calendarf;
+function setDailyTask(arg0: string) {
+  throw new Error("Function not implemented.");
+}
+
