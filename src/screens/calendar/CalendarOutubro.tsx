@@ -12,57 +12,15 @@ interface Day {
 }
 
 function Calendarj() {
-  LocaleConfig.locales["pt-br"] = {
-    monthNames: [
-      "Janeiro",
-      "Fevereiro",
-      "Março",
-      "Abril",
-      "Maio",
-      "Junho",
-      "Julho",
-      "Agosto",
-      "Setembro",
-      "Outubro",
-      "Novembro",
-      "Dezembro",
-    ],
-    monthNamesShort: [
-      "Jan",
-      "Fev",
-      "Mar",
-      "Abr",
-      "Mai",
-      "Jun",
-      "Jul",
-      "Ago",
-      "Set",
-      "Out",
-      "Nov",
-      "Dez",
-    ],
-    dayNames: [
-      "Domingo",
-      "Segunda",
-      "Terça",
-      "Quarta",
-      "Quinta",
-      "Sexta",
-      "Sábado",
-    ],
-    dayNamesShort: ["Dom.", "Seg.", "Ter.", "Qua.", "Qui.", "Sex.", "Sáb."],
-    today: "Hoje",
-  };
-  LocaleConfig.defaultLocale = "pt-br";
-  const [selectedDate, setSelectedDate] = useState<string | null>("2023-01-01");
+  const [selectedDate, setSelectedDate] = useState<string | null>("2023-10-01");
   const navigation = useNavigation();
 
 
   const [dailyTask, setDailyTask] = useState<string>("");
 
   const dailyTasks = {
-    "2023-01-01": "Academia hoje hein!",
-    "2023-01-20": "Hoje você vai descansar!",
+    "2023-10-01": "Academia hoje hein!",
+    "2023-10-20": "Hoje você vai descansar!",
     // Adicione mais datas conforme necessário
   };
 
@@ -88,7 +46,7 @@ function Calendarj() {
       setDailyTask(dailyTasks[day.dateString]);
     } else {
       // Se não houver tarefa definida, você pode definir uma mensagem padrão ou deixá-la vazia
-      setDailyTask("Pedro matuê ❤️ Tereza");
+      setDailyTask("Ainda estamos em desenvolvimento...");
     }
   };
 
@@ -100,7 +58,7 @@ function Calendarj() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.txt}>Janeiro</Text>
+      <Text style={styles.txt}>Outubro</Text>
       <Calendar
         onDayPress={onDayPress}
         markedDates={markedDates}
@@ -114,9 +72,9 @@ function Calendarj() {
           dotColor: "blue",
           selectedDotColor: "white",
         }}
-        current={"2023-01-01"}
-        minDate={"2023-01-01"}
-        maxDate={"2023-01-30"}
+        current={"2023-10-01"}
+        minDate={"2023-10-01"}
+        maxDate={"2023-10-31"}
         hideArrows={true}
         hideMonthTitle={true}
         renderHeader={renderHeader}

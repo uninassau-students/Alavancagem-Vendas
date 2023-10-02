@@ -5,12 +5,56 @@ import { Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
+import { LocaleConfig } from "react-native-calendars";
 
 interface Day {
   dateString: string;
 }
 
 function Calendarf() {
+  LocaleConfig.locales["pt-br"] = {
+    monthNames: [
+      "Janeiro",
+      "Fevereiro",
+      "Março",
+      "Abril",
+      "Maio",
+      "Junho",
+      "Julho",
+      "Agosto",
+      "Setembro",
+      "Outubro",
+      "Novembro",
+      "Dezembro",
+    ],
+    monthNamesShort: [
+      "Jan",
+      "Fev",
+      "Mar",
+      "Abr",
+      "Mai",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Set",
+      "Out",
+      "Nov",
+      "Dez",
+    ],
+    dayNames: [
+      "Domingo",
+      "Segunda",
+      "Terça",
+      "Quarta",
+      "Quinta",
+      "Sexta",
+      "Sábado",
+    ],
+    dayNamesShort: ["Dom.", "Seg.", "Ter.", "Qua.", "Qui.", "Sex.", "Sáb."],
+    today: "Hoje",
+  };
+  LocaleConfig.defaultLocale = "pt-br";
+
   const [selectedDate, setSelectedDate] = useState<string | null>("2023-02-02");
   const navigation = useNavigation();
 
@@ -50,8 +94,8 @@ function Calendarf() {
           dotColor: "blue",
           selectedDotColor: "white",
         }}
-        current={"2023-02-02"}
-        minDate={"2023-01-02"}
+        current={"2023-02-01"}
+        minDate={"2023-01-01"}
         maxDate={"2023-02-30"}
         hideArrows={true}
         hideMonthTitle={true}
