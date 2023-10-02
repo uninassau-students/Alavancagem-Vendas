@@ -5,6 +5,7 @@ import { Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
+import { Center } from "native-base";
 interface Day {
   dateString: string;
 }
@@ -12,6 +13,19 @@ interface Day {
 function Calendarj() {
   const [selectedDate, setSelectedDate] = useState<string | null>("2023-01-01");
   const navigation = useNavigation();
+
+
+  const [dailyTask, setDailyTask] = useState<string>("");
+
+  const dailyTasks = {
+    "2023-01-01": "Academia hoje hein!",
+    "2023-01-20": "Hoje você vai descansar!",
+    // Adicione mais datas conforme necessário
+  };
+
+  
+
+
 
   const handlepress = () => {
     console.log("Voltando");
@@ -22,8 +36,17 @@ function Calendarj() {
     console.log("Home");
     navigation.navigate("Login");
   };
+  
   const onDayPress = (day: Day) => {
     setSelectedDate(day.dateString);
+
+    // Verifique se há uma tarefa para o dia clicado
+    if (dailyTasks[day.dateString]) {
+      setDailyTask(dailyTasks[day.dateString]);
+    } else {
+      // Se não houver tarefa definida, você pode definir uma mensagem padrão ou deixá-la vazia
+      setDailyTask("Pedro matuê ❤️ Tereza");
+    }
   };
 
   const markedDates: MarkedDates = {};
@@ -59,7 +82,7 @@ function Calendarj() {
         style={{
           fontWeight: "500",
           fontSize: 22,
-          marginTop: 10,
+          marginTop: 40,
           marginLeft: 20,
         }}
       >
@@ -68,15 +91,16 @@ function Calendarj() {
       <Text
         style={{
           fontWeight: "400",
-          fontSize: 15,
+          fontSize: 25,
           marginTop: 10,
-          marginLeft: 20,
+          marginLeft: 0,
           justifyContent: "center",
           paddingTop: 80,
+          textAlign: "center",
         }}
       >
-        {" "}
-        Você realizará uma live mostrando seus produtos
+        {dailyTask}
+        
       </Text>
       <View style={styles.bottomButtons}>
         <Button
