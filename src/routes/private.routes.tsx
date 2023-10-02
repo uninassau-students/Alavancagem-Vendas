@@ -19,6 +19,13 @@ import Calendarm from "../screens/calendar/CalendarMarco";
 import Calendara from "../screens/calendar/CalendarAbril";
 import Calendarma from "../screens/calendar/CalendarMaio";
 import Calendarjun from "../screens/calendar/CalendarJunho";
+import CalendarJulho from "../screens/calendar/CalendarJulho";
+import CalendarAgosto from "../screens/calendar/CalendarAgosto";
+import CalendarSetembro from "../screens/calendar/CalendarSetembro";
+import CalendarOutubro from "../screens/calendar/CalendarOutubro";
+import CalendarNovembro from "../screens/calendar/CalandarNovembro";
+import CalendarDezembro from "../screens/calendar/CalendarDezembro";
+
 
 export default function PrivateRoutes() {
   const [fontsLoaded] = useFonts({
@@ -109,6 +116,49 @@ export default function PrivateRoutes() {
           header: () => null,
         }}
       />
+      <Stack.Screen
+        name="CalendarJulho"
+        component={CalendarJulho}
+        options={{
+          header: () => null,
+        }}
+      />
+      <Stack.Screen
+        name="CalendarAgosto"
+        component={CalendarAgosto}
+        options={{
+          header: () => null,
+        }}
+      />
+      <Stack.Screen
+        name="CalendarSetembro"
+        component={CalendarSetembro}
+        options={{
+          header: () => null,
+        }}
+      />
+      <Stack.Screen
+        name="CalendarOutubro"
+        component={CalendarOutubro}
+        options={{
+          header: () => null,
+        }}
+      />
+      <Stack.Screen
+        name="CalendarNovembro"
+        component={CalendarNovembro}
+        options={{
+          header: () => null,
+        }}
+      />
+      <Stack.Screen
+        name="CalendarDezembro"
+        component={CalendarDezembro}
+        options={{
+          header: () => null,
+        }}
+      />
+
     </Stack.Navigator>
   );
 }

@@ -6,11 +6,54 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
 import { Center } from "native-base";
+import { LocaleConfig } from "react-native-calendars";
 interface Day {
   dateString: string;
 }
 
 function Calendarj() {
+  LocaleConfig.locales["pt-br"] = {
+    monthNames: [
+      "Janeiro",
+      "Fevereiro",
+      "Março",
+      "Abril",
+      "Maio",
+      "Junho",
+      "Julho",
+      "Agosto",
+      "Setembro",
+      "Outubro",
+      "Novembro",
+      "Dezembro",
+    ],
+    monthNamesShort: [
+      "Jan",
+      "Fev",
+      "Mar",
+      "Abr",
+      "Mai",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Set",
+      "Out",
+      "Nov",
+      "Dez",
+    ],
+    dayNames: [
+      "Domingo",
+      "Segunda",
+      "Terça",
+      "Quarta",
+      "Quinta",
+      "Sexta",
+      "Sábado",
+    ],
+    dayNamesShort: ["Dom.", "Seg.", "Ter.", "Qua.", "Qui.", "Sex.", "Sáb."],
+    today: "Hoje",
+  };
+  LocaleConfig.defaultLocale = "pt-br";
   const [selectedDate, setSelectedDate] = useState<string | null>("2023-01-01");
   const navigation = useNavigation();
 

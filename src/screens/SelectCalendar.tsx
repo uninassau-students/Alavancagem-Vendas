@@ -13,7 +13,7 @@ const SelectCalendar = () => {
     navigation.navigate("Login");
   };
 
-  const handlepress = () => {
+  const handlepressBack = () => {
     console.log("voltando");
     navigation.navigate("Nicho");
   };
@@ -42,6 +42,31 @@ const SelectCalendar = () => {
     console.log("indo pro calendario");
     navigation.navigate("Calendarjun");
   };
+  const handlePressJulho = () => {
+    console.log("indo pro calendário")
+    navigation.navigate("CalendarJulho")
+  };
+  const handlePressAgosto = () => {
+    console.log("indo pro calendário")
+    navigation.navigate("CalendarAgosto")
+  };
+  const handlePressSetembro = () => {
+    console.log("indo pro calendário")
+    navigation.navigate("CalendarSetembro")
+  };
+  const handlePressOutubro = () => {
+    console.log("indo pro calendário")
+    navigation.navigate("CalendarOutubro")
+  };
+  const handlePressNovembro = () => {
+    console.log("indo pro calendário")
+    navigation.navigate("CalendarNovembro")
+  };
+  const handlePressDezembro = () => {
+    console.log("indo pro calendário")
+    navigation.navigate("CalendarDezembro")
+  };
+
 
   return (
     <ScrollView style={{ flex: 1 }}>
@@ -104,6 +129,9 @@ const SelectCalendar = () => {
             </TouchableOpacity>
             <Text style={styles.text}>Maio</Text>
           </View>      
+
+
+
           <View style={styles.imageContainer}>
             <TouchableOpacity style={{}} onPress={handlePressJUN}>
               <Image
@@ -118,7 +146,7 @@ const SelectCalendar = () => {
 
       <View style={styles.row}>
         <View style={styles.imageContainer}>
-            <TouchableOpacity style={{}} onPress={handlePressMA}>
+            <TouchableOpacity style={{}} onPress={handlePressJulho}>
               <Image
                 source={require("../assets1/CalendarPng/julho.png")}
                 style={styles.image}
@@ -126,8 +154,9 @@ const SelectCalendar = () => {
             </TouchableOpacity>
             <Text style={styles.text}>Julho</Text>
           </View>      
+
           <View style={styles.imageContainer}>
-            <TouchableOpacity style={{}} onPress={handlePressJUN}>
+            <TouchableOpacity style={{}} onPress={handlePressAgosto}>
               <Image
                 source={require("../assets1/CalendarPng/agosto.png")}
                 style={styles.image}
@@ -140,7 +169,7 @@ const SelectCalendar = () => {
 
       <View style={styles.row}>
         <View style={styles.imageContainer}>
-            <TouchableOpacity style={{}} onPress={handlePressMA}>
+            <TouchableOpacity style={{}} onPress={handlePressSetembro}>
               <Image
                 source={require("../assets1/CalendarPng/setembro.png")}
                 style={styles.image}
@@ -149,7 +178,7 @@ const SelectCalendar = () => {
             <Text style={styles.text}>Setembro</Text>
           </View>      
           <View style={styles.imageContainer}>
-            <TouchableOpacity style={{}} onPress={handlePressJUN}>
+            <TouchableOpacity style={{}} onPress={handlePressOutubro}>
               <Image
                 source={require("../assets1/CalendarPng/outubro.png")}
                 style={styles.image}
@@ -161,7 +190,7 @@ const SelectCalendar = () => {
 
       <View style={styles.row}>
         <View style={styles.imageContainer}>
-            <TouchableOpacity style={{}} onPress={handlePressMA}>
+            <TouchableOpacity style={{}} onPress={handlePressNovembro}>
               <Image
                 source={require("../assets1/CalendarPng/novembro.png")}
                 style={styles.image}
@@ -170,7 +199,7 @@ const SelectCalendar = () => {
             <Text style={styles.text}>Novembro</Text>
           </View>      
           <View style={styles.imageContainer}>
-            <TouchableOpacity style={{}} onPress={handlePressJUN}>
+            <TouchableOpacity style={{}} onPress={handlePressDezembro}>
               <Image
                 source={require("../assets1/CalendarPng/dezembro.png")}
                 style={styles.image}
@@ -198,7 +227,7 @@ const SelectCalendar = () => {
             icon={<Icon name="keyboard-arrow-left" size={30} color="#9DD9E7" />}
             title=""
             buttonStyle={styles.button}
-            onPress={handlepress}
+            onPress={handlepressBack}
           />
           <Button
             icon={<Icon name="home" size={30} color="#9DD9E7" />}
