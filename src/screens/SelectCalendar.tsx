@@ -4,7 +4,6 @@ import { Button } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { useNavigation } from "@react-navigation/native";
-import { Center, HStack } from "native-base";
 
 const SelectCalendar = () => {
   const navigation = useNavigation();
@@ -42,6 +41,30 @@ const SelectCalendar = () => {
   const handlePressJUN = () => {
     console.log("indo pro calendario");
     navigation.navigate("Calendarjun");
+  };
+  const handlePressJulho = () => {
+    console.log("indo pro calendário");
+    navigation.navigate("CalendarJulho");
+  };
+  const handlePressAgosto = () => {
+    console.log("indo pro calendário");
+    navigation.navigate("CalendarAgosto");
+  };
+  const handlePressSetembro = () => {
+    console.log("indo pro calendário");
+    navigation.navigate("CalendarSetembro");
+  };
+  const handlePressOutubro = () => {
+    console.log("indo pro calendário");
+    navigation.navigate("CalendarOutubro");
+  };
+  const handlePressNovembro = () => {
+    console.log("indo pro calendário");
+    navigation.navigate("CalendarNovembro");
+  };
+  const handlePressDezembro = () => {
+    console.log("indo pro calendário");
+    navigation.navigate("CalendarDezembro");
   };
 
   return (
@@ -115,7 +138,7 @@ const SelectCalendar = () => {
 
         <View style={styles.row}>
           <View style={styles.imageContainer}>
-            <TouchableOpacity style={{}} onPress={handlePressJ}>
+            <TouchableOpacity style={{}} onPress={handlePressJulho}>
               <Image
                 source={require("../assets1/CalendarPng/julho.png")}
                 style={styles.image}
@@ -125,7 +148,7 @@ const SelectCalendar = () => {
           </View>
 
           <View style={styles.imageContainer}>
-            <TouchableOpacity style={{}} onPress={handlePressA}>
+            <TouchableOpacity style={{}} onPress={handlePressAgosto}>
               <Image
                 source={require("../assets1/CalendarPng/agosto.png")}
                 style={styles.image}

@@ -57,18 +57,22 @@ function Calendarj() {
   const [selectedDate, setSelectedDate] = useState<string | null>("2023-01-01");
   const navigation = useNavigation();
 
-
   const [dailyTask, setDailyTask] = useState<string>("");
 
   const dailyTasks = {
     "2023-01-01": "Academia hoje hein!",
     "2023-01-20": "Hoje você vai descansar!",
-    // Adicione mais datas conforme necessário
+    "2023-01-02":
+      "Aproveite o espírito festivo do Ano Novo e ofereça uma promoção especial para produtos populares em sua loja. Isso pode incluir descontos significativos, brindes ou frete grátis para compras acima de um determinado valor. Promova essa oferta por meio das redes sociais, e-mails e em seu site.",
+    "2023-01-03":
+      "Aproveite o espírito festivo do Ano Novo e ofereça uma promoção especial para produtos populares em sua loja. Isso pode incluir descontos significativos, brindes ou frete grátis para compras acima de um determinado valor. Promova essa oferta por meio das redes sociais, e-mails e em seu site.",
+    "2023-01-08":
+      "Dedique esta semana para mostrar apreço aos seus clientes regulares. Ofereça a eles um desconto exclusivo em toda a loja ou em determinadas categorias de produtos. Além disso, envie mensagens de agradecimento personalizadas, mostrando o quanto você valoriza a sua lealdade. Considere também enviar um pequeno brinde junto com as compras feitas por clientes fiéis durante esta semana.",
+    "2023-01-15":
+      "No meio do mês, muitas pessoas estão ansiosas por um estímulo financeiro. Aproveite isso oferecendo uma promoção surpresa, como um desconto progressivo (quanto mais se compra, maior é o desconto), durante um dia específico nesta semana. Anuncie essa promoção com antecedência para criar antecipação e entusiasmo entre os clientes.",
+    "2023-01-22":
+      "A última semana do mês é uma ótima oportunidade para uma grande liquidação. Identifique os produtos em estoque que precisam ser movidos rapidamente e ofereça descontos significativos sobre esses itens. Promova a venda como uma 'Liquidação de Fim de Mês', incentivando as compras finais antes do mês terminar.",
   };
-
-  
-
-
 
   const handlepress = () => {
     console.log("Voltando");
@@ -79,7 +83,7 @@ function Calendarj() {
     console.log("Home");
     navigation.navigate("Login");
   };
-  
+
   const onDayPress = (day: Day) => {
     setSelectedDate(day.dateString);
 
@@ -134,16 +138,14 @@ function Calendarj() {
       <Text
         style={{
           fontWeight: "400",
-          fontSize: 25,
-          marginTop: 10,
-          marginLeft: 0,
+          fontSize: 20,
+
           justifyContent: "center",
           paddingTop: 80,
           textAlign: "center",
         }}
       >
         {dailyTask}
-        
       </Text>
       <View style={styles.bottomButtons}>
         <Button
@@ -165,9 +167,9 @@ function Calendarj() {
 
 const styles = StyleSheet.create({
   txt: {
-    marginTop: 50,
+    marginTop: 25,
     marginLeft: 20,
-    marginBottom: 20,
+    marginBottom: 10,
     fontWeight: "500",
     fontSize: 25,
   },

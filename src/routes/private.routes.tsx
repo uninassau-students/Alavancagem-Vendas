@@ -26,7 +26,6 @@ import CalendarOutubro from "../screens/calendar/CalendarOutubro";
 import CalendarNovembro from "../screens/calendar/CalandarNovembro";
 import CalendarDezembro from "../screens/calendar/CalendarDezembro";
 
-
 export default function PrivateRoutes() {
   const [fontsLoaded] = useFonts({
     Roboto_400Regular,
@@ -158,7 +157,6 @@ export default function PrivateRoutes() {
           header: () => null,
         }}
       />
-
     </Stack.Navigator>
   );
 }

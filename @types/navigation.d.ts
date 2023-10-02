@@ -11,6 +11,12 @@ export declare global {
       Calendara: undefined;
       Calendarma: undefined;
       Calendarjun: undefined;
+      CalendarJulho: undefined;
+      CalendarSetembro: undefined;
+      CalendarAgosto: undefined;
+      CalendarOutubro: undefined;
+      CalendarNovembro: undefined;
+      CalendarDezembro: undefined;
     }
   }
 }
