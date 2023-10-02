@@ -6,6 +6,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
 import { LocaleConfig } from "react-native-calendars";
+import { dailyTasksMarco } from "../../lib/task";
 interface Day {
   dateString: string;
 }
@@ -56,6 +57,8 @@ function Calendarm() {
   const [selectedDate, setSelectedDate] = useState<string | null>("2023-03-01");
   const navigation = useNavigation();
 
+  const [dailyTask, setDailyTask] = useState<string>("");
+
   const handlepress = () => {
     console.log("Voltando");
     navigation.navigate("SelectCalendar");
@@ -67,6 +70,14 @@ function Calendarm() {
   };
   const onDayPress = (day: Day) => {
     setSelectedDate(day.dateString);
+
+    // Verifique se há uma tarefa para o dia clicado
+    if (dailyTasksMarco[day.dateString]) {
+      setDailyTask(dailyTasksMarco[day.dateString]);
+    } else {
+      // Se não houver tarefa definida, você pode definir uma mensagem padrão ou deixá-la vazia
+      setDailyTask("Nada a fazer hoje");
+    }
   };
 
   const markedDates: MarkedDates = {};
@@ -93,7 +104,7 @@ function Calendarm() {
         }}
         current={"2023-03-01"}
         minDate={"2023-02-01"}
-        maxDate={"2023-03-30"}
+        maxDate={"2023-03-31"}
         hideArrows={true}
         hideMonthTitle={true}
         renderHeader={renderHeader}
@@ -118,8 +129,7 @@ function Calendarm() {
           paddingTop: 80,
         }}
       >
-        {" "}
-        Você realizará uma live mostrando seus produtos
+        {dailyTask}
       </Text>
       <View style={styles.bottomButtons}>
         <Button

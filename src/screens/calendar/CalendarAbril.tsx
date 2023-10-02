@@ -6,6 +6,8 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
 import { LocaleConfig } from "react-native-calendars";
+import { dailyTasksAbril } from "../../lib/task";
+
 interface Day {
   dateString: string;
 }
@@ -54,8 +56,9 @@ function Calendara() {
   };
   LocaleConfig.defaultLocale = "pt-br";
   const [selectedDate, setSelectedDate] = useState<string | null>("2023-04-01");
-
   const navigation = useNavigation();
+
+  const [dailyTask, setDailyTask] = useState<string>("");
 
   const handlepress = () => {
     console.log("Voltando");
@@ -69,6 +72,14 @@ function Calendara() {
 
   const onDayPress = (day: Day) => {
     setSelectedDate(day.dateString);
+
+    // Verifique se há uma tarefa para o dia clicado
+    if (dailyTasksAbril[day.dateString]) {
+      setDailyTask(dailyTasksAbril[day.dateString]);
+    } else {
+      // Se não houver tarefa definida, você pode definir uma mensagem padrão ou deixá-la vazia
+      setDailyTask("Nada a fazer hoje");
+    }
   };
 
   const markedDates: MarkedDates = {};
@@ -120,8 +131,7 @@ function Calendara() {
           paddingTop: 80,
         }}
       >
-        {""}
-        Você realizará uma live mostrando seus produtos
+        {dailyTask}
       </Text>
       <View style={styles.bottomButtons}>
         <Button

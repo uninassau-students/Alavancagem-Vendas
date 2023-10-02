@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
   }
 
   const LoginToken = async (email: string, password: string) => {
-    const response = await api.post("/auth/user", { email, password });
+    const response = await api.post("/auth", { email, password });
     if (response.data.error) {
       alert(response.data.error);
       return false;

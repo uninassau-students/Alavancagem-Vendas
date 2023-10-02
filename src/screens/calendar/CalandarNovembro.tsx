@@ -7,7 +7,7 @@ import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
 import { Center } from "native-base";
 import { LocaleConfig } from "react-native-calendars";
-import { dailyTasksJaneiro } from "../../lib/task";
+import { dailyTasksNovembro } from "../../lib/task";
 interface Day {
   dateString: string;
 }
@@ -32,8 +32,8 @@ function Calendarj() {
     setSelectedDate(day.dateString);
 
     // Verifique se há uma tarefa para o dia clicado
-    if (dailyTasksJaneiro[day.dateString]) {
-      setDailyTask(dailyTasksJaneiro[day.dateString]);
+    if (dailyTasksNovembro[day.dateString]) {
+      setDailyTask(dailyTasksNovembro[day.dateString]);
     } else {
       // Se não houver tarefa definida, você pode definir uma mensagem padrão ou deixá-la vazia
       setDailyTask("Ainda estamos em desenvolvimento...");

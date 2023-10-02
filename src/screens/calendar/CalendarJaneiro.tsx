@@ -78,7 +78,7 @@ function Calendarj() {
       setDailyTask(dailyTasksJaneiro[day.dateString]);
     } else {
       // Se não houver tarefa definida, você pode definir uma mensagem padrão ou deixá-la vazia
-      setDailyTask("Pedro matuê ❤️ Tereza");
+      setDailyTask("Nada a fazer hoje");
     }
   };
 
@@ -106,7 +106,7 @@ function Calendarj() {
         }}
         current={"2023-01-01"}
         minDate={"2023-01-01"}
-        maxDate={"2023-01-30"}
+        maxDate={"2023-01-31"}
         hideArrows={true}
         hideMonthTitle={true}
         renderHeader={renderHeader}

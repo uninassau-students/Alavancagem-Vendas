@@ -6,7 +6,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
 import { LocaleConfig } from "react-native-calendars";
-import { dailyTasksFevereiro } from '../../lib/task'
+import { dailyTasksFevereiro } from "../../lib/task";
 import day from "react-native-calendars/src/calendar/day";
 
 interface Day {
@@ -60,6 +60,8 @@ function Calendarf() {
   const [selectedDate, setSelectedDate] = useState<string | null>("2023-02-02");
   const navigation = useNavigation();
 
+  const [dailyTask, setDailyTask] = useState<string>("");
+
   const handlepress = () => {
     console.log("Voltando");
     navigation.navigate("SelectCalendar");
@@ -78,10 +80,9 @@ function Calendarf() {
       setDailyTask(dailyTasksFevereiro[day.dateString]);
     } else {
       // Se não houver tarefa definida, você pode definir uma mensagem padrão ou deixá-la vazia
-      setDailyTask("FFWEFQWF");
+      setDailyTask("Nada a fazer hoje");
     }
   };
-
 
   const markedDates: MarkedDates = {};
   if (selectedDate) {
@@ -132,8 +133,7 @@ function Calendarf() {
           paddingTop: 80,
         }}
       >
-        {" "}
-        Você realizará uma live mostrando seus produtos
+        {dailyTask}
       </Text>
       <View style={styles.bottomButtons}>
         <Button
@@ -184,7 +184,3 @@ const styles = StyleSheet.create({
 });
 
 export default Calendarf;
-function setDailyTask(arg0: string) {
-  throw new Error("Function not implemented.");
-}
-
