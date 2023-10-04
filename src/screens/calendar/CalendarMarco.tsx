@@ -1,17 +1,22 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React, { useState,useEffect } from "react";
+import { StyleSheet, View, Text} from "react-native";
 import { Calendar } from "react-native-calendars";
-import { Button } from "react-native-elements";
+import { Button,CheckBox} from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
 import { LocaleConfig } from "react-native-calendars";
 import { dailyTasksMarco } from "../../lib/task";
+import { useCheckbox } from '../../context/CheckboxContext';
+import Day from "react-native-calendars/src/calendar/day";
 interface Day {
   dateString: string;
+  day: number;
+  month: number;
+  year: number;
 }
-
 function Calendarm() {
+  
   LocaleConfig.locales["pt-br"] = {
     monthNames: [
       "Janeiro",
@@ -53,13 +58,39 @@ function Calendarm() {
     dayNamesShort: ["Dom.", "Seg.", "Ter.", "Qua.", "Qui.", "Sex.", "Sáb."],
     today: "Hoje",
   };
-  LocaleConfig.defaultLocale = "pt-br";
-  const [selectedDate, setSelectedDate] = useState<string | null>("2023-03-01");
+  interface Day {
+    dateString: any;
+    day: number;
+    month: number;
+    year: number;
+  }
   const initialDate = "2023-03-01";
   const initialTask = dailyTasksMarco[initialDate] || "Nada a fazer hoje";
   const navigation = useNavigation();
-
+  LocaleConfig.defaultLocale = "pt-br";
+  const [selectedDate, setSelectedDate] = useState<string | null | number >("2023-03-01");
+  const { check, setCheck } = useCheckbox();
+ 
+  
   const [dailyTask, setDailyTask] = useState<string>(initialTask);
+  console.log(selectedDate)
+  console.log(check) 
+
+useEffect(() => {
+  if (selectedDate) {
+    const isChecked = check[selectedDate] || true;
+    
+    if (isChecked === undefined) {
+      setCheck({ ...check, [selectedDate]: false });
+    } else if (isChecked === true) {
+      setCheck({ ...check });
+    }else {
+      setCheck({ ...check, [selectedDate]: false });
+    }
+    console.log(isChecked) 
+  }
+  
+}, [selectedDate]);
 
   const handlepress = () => {
     console.log("Voltando");
@@ -87,6 +118,7 @@ function Calendarm() {
     markedDates[selectedDate] = { dotColor: "blue", selected: true };
   }
   const renderHeader = () => null;
+ 
 
   return (
     <View style={styles.container}>
@@ -133,6 +165,16 @@ function Calendarm() {
       >
         {dailyTask}
       </Text>
+    
+      <CheckBox
+  checked={check[selectedDate || ""] || false}
+  onPress={() => {
+    const updatedCheck = { ...check };
+    updatedCheck[selectedDate || ""] = !updatedCheck[selectedDate || ""];
+    setCheck(updatedCheck);
+  }}
+/>
+
       <View style={styles.bottomButtons}>
         <Button
           icon={<Icon name="keyboard-arrow-left" size={30} color="#9DD9E7" />}

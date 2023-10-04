@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
 import { Calendar } from "react-native-calendars";
-import { Button } from "react-native-elements";
+import { Button, CheckBox } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
+import { useCheckbox } from '../../context/CheckboxContext';
 import { LocaleConfig } from "react-native-calendars";
 import { dailyTasksJaneiro, IDailyProps } from "../../lib/task";
 
@@ -13,7 +14,7 @@ interface Day {
 }
 
 function Calendarj() {
-  
+
   LocaleConfig.locales["pt-br"] = {
     monthNames: [
       "Janeiro",
@@ -61,7 +62,29 @@ function Calendarj() {
   const initialTask = dailyTasksJaneiro[initialDate] || "Nada a fazer hoje";
   const navigation = useNavigation();
 
+  const { check, setCheck } = useCheckbox();
+
+
   const [dailyTask, setDailyTask] = useState<string>(initialTask);
+  console.log(selectedDate)
+  console.log(check)
+
+  useEffect(() => {
+    if (selectedDate) {
+      const isChecked = check[selectedDate] || true;
+
+      if (isChecked === undefined) {
+        setCheck({ ...check, [selectedDate]: false });
+      } else if (isChecked === true) {
+        setCheck({ ...check });
+      } else {
+        setCheck({ ...check, [selectedDate]: false });
+      }
+      console.log(isChecked)
+    }
+
+  }, [selectedDate]);
+
 
   const handlePress = () => {
     console.log("Voltando");
@@ -115,9 +138,18 @@ function Calendarj() {
         renderHeader={renderHeader}
       />
       <Text style={styles.headerText}>O que você vai fazer:</Text>
-      <ScrollView style={{ flex: 1 }}>
+    
         <Text style={styles.dailyTaskText}>{dailyTask}</Text>
-      </ScrollView>
+     
+
+      <CheckBox
+        checked={check[selectedDate || ""] || false}
+        onPress={() => {
+          const updatedCheck = { ...check };
+          updatedCheck[selectedDate || ""] = !updatedCheck[selectedDate || ""];
+          setCheck(updatedCheck);
+        }}
+      />
 
       <View style={styles.bottomButtons}>
         <Button
@@ -169,10 +201,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "100%",
     bottom: 0,
-    paddingHorizontal:10,
+    paddingHorizontal: 10,
     backgroundColor: "white",
-    marginLeft:10,
-    marginBottom:10
+    marginLeft: 10,
+    marginBottom: 10
   },
   button: {
     backgroundColor: "white",

@@ -13,6 +13,7 @@ import LoginHome from "../screens/Login";
 import Nicho from "../screens/SelectNicho";
 import Register from "../screens/register";
 import SelectCalendar from "../screens/SelectCalendar";
+import { CheckboxProvider } from "../context/CheckboxContext";
 import Calendarj from "../screens/calendar/CalendarJaneiro";
 import Calendarf from "../screens/calendar/CalendarFevereiro";
 import Calendarm from "../screens/calendar/CalendarMarco";
@@ -35,6 +36,7 @@ export default function PrivateRoutes() {
 
   const Stack = createStackNavigator();
   return (
+    <CheckboxProvider>
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
         name="Home"
@@ -73,6 +75,7 @@ export default function PrivateRoutes() {
           header: () => null,
         }}
       />
+    
       <Stack.Screen
         name="Calendarj"
         component={Calendarj}
@@ -157,6 +160,8 @@ export default function PrivateRoutes() {
           header: () => null,
         }}
       />
+     
     </Stack.Navigator>
+     </CheckboxProvider>
   );
 }

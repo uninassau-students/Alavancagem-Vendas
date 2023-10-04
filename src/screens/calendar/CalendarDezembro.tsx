@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Calendar } from "react-native-calendars";
-import { Button } from "react-native-elements";
+import { Button,CheckBox } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
+import { useCheckbox } from '../../context/CheckboxContext';
 import { Center } from "native-base";
 import { LocaleConfig } from "react-native-calendars";
 import { dailyTasksDezembro } from "../../lib/task";
@@ -60,7 +61,28 @@ function Calendarj() {
   const initialTask = dailyTasksDezembro[initialDate] || "Nada a fazer hoje";
   const navigation = useNavigation();
 
+  const { check, setCheck } = useCheckbox();
+
+
   const [dailyTask, setDailyTask] = useState<string>(initialTask);
+  console.log(selectedDate)
+  console.log(check)
+
+  useEffect(() => {
+    if (selectedDate) {
+      const isChecked = check[selectedDate] || true;
+
+      if (isChecked === undefined) {
+        setCheck({ ...check, [selectedDate]: false });
+      } else if (isChecked === true) {
+        setCheck({ ...check });
+      } else {
+        setCheck({ ...check, [selectedDate]: false });
+      }
+      console.log(isChecked)
+    }
+
+  }, [selectedDate]);
 
 
   const handlepress = () => {
@@ -76,11 +98,11 @@ function Calendarj() {
   const onDayPress = (day: Day) => {
     setSelectedDate(day.dateString);
 
-    // Verifique se há uma tarefa para o dia clicado
+   
     if (dailyTasksDezembro[day.dateString]) {
       setDailyTask(dailyTasksDezembro[day.dateString]);
     } else {
-      // Se não houver tarefa definida, você pode definir uma mensagem padrão ou deixá-la vazia
+    
       setDailyTask("Nada a fazer hoje");
     }
   };
@@ -138,6 +160,15 @@ function Calendarj() {
         {dailyTask}
         
       </Text>
+<CheckBox
+  checked={check[selectedDate || ""] || false}
+  onPress={() => {
+    const updatedCheck = { ...check };
+    updatedCheck[selectedDate || ""] = !updatedCheck[selectedDate || ""];
+    setCheck(updatedCheck);
+  }}
+/>
+
       <View style={styles.bottomButtons}>
         <Button
           icon={<Icon name="keyboard-arrow-left" size={30} color="#9DD9E7" />}
