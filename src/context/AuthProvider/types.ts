@@ -8,8 +8,8 @@ export interface IUser {
 
 export interface IAuthProps extends IUser {
   user: IUser | null;
-  LoginToken: (email: string, password: string) => Promise<boolean>;
-  authenticate: (email: string, password: string) => Promise<void>;
+  LoginToken: (email: string, password: string,username:string) => Promise<boolean>;
+  authenticate: (email: string, password: string,username:string) => Promise<void>;
   logout: () => void;
   signed: boolean;
 }

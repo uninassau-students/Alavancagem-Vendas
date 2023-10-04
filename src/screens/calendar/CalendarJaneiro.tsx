@@ -13,6 +13,7 @@ interface Day {
 }
 
 function Calendarj() {
+  
   LocaleConfig.locales["pt-br"] = {
     monthNames: [
       "Janeiro",
@@ -56,9 +57,11 @@ function Calendarj() {
   };
   LocaleConfig.defaultLocale = "pt-br";
   const [selectedDate, setSelectedDate] = useState<string | null>("2023-01-01");
+  const initialDate = "2023-01-01";
+  const initialTask = dailyTasksJaneiro[initialDate] || "Nada a fazer hoje";
   const navigation = useNavigation();
 
-  const [dailyTask, setDailyTask] = useState<string>("");
+  const [dailyTask, setDailyTask] = useState<string>(initialTask);
 
   const handlePress = () => {
     console.log("Voltando");
@@ -140,7 +143,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   txt: {
-    marginTop: 25,
+    marginTop: 50,
     marginLeft: 20,
     marginBottom: 10,
     fontWeight: "500",
@@ -166,9 +169,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "100%",
     bottom: 0,
-    left: 0,
-    right: 0,
+    paddingHorizontal:10,
     backgroundColor: "white",
+    marginLeft:10,
+    marginBottom:10
   },
   button: {
     backgroundColor: "white",

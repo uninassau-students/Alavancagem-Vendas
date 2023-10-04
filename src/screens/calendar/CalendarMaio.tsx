@@ -56,9 +56,11 @@ function Calendarma() {
   };
   LocaleConfig.defaultLocale = "pt-br";
   const [selectedDate, setSelectedDate] = useState<string | null>("2023-05-01");
+  const initialDate = "2023-05-01";
+  const initialTask = dailyTasksMaio[initialDate] || "Nada a fazer hoje";
   const navigation = useNavigation();
 
-  const [dailyTask, setDailyTask] = useState<string>("");
+  const [dailyTask, setDailyTask] = useState<string>(initialTask);
 
   const handlepress = () => {
     console.log("Voltando");
@@ -124,7 +126,7 @@ function Calendarma() {
       <Text
         style={{
           fontWeight: "400",
-          fontSize: 15,
+          fontSize: 20,
           marginTop: 10,
           marginLeft: 20,
           justifyContent: "center",
@@ -175,9 +177,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    position: "relative",
+    position: "absolute",
     width: "100%",
-    bottom: "-40%",
+    bottom: 0,
+    paddingHorizontal:10,
+    backgroundColor: "white",
+    marginLeft:10,
+    marginBottom:10
   },
 });
 

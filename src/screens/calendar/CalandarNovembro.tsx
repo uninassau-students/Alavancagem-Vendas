@@ -7,17 +7,18 @@ import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
 import { Center } from "native-base";
 import { LocaleConfig } from "react-native-calendars";
-import { dailyTasksNovembro } from "../../lib/task";
+import { dailyTasksFevereiro, dailyTasksNovembro } from "../../lib/task";
 interface Day {
   dateString: string;
 }
 
 function Calendarj() {
   const [selectedDate, setSelectedDate] = useState<string | null>("2023-11-01");
+  const initialDate = "2023-11-01";
+  const initialTask = dailyTasksNovembro[initialDate] || "Nada a fazer hoje";
   const navigation = useNavigation();
 
-  const [dailyTask, setDailyTask] = useState<string>("");
-
+  const [dailyTask, setDailyTask] = useState<string>(initialTask);
   const handlepress = () => {
     console.log("Voltando");
     navigation.navigate("SelectCalendar");
@@ -82,7 +83,7 @@ function Calendarj() {
       <Text
         style={{
           fontWeight: "400",
-          fontSize: 25,
+          fontSize: 20,
           marginTop: 10,
           marginLeft: 0,
           justifyContent: "center",
@@ -134,9 +135,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    position: "relative",
+    position: "absolute",
     width: "100%",
-    bottom: "-40%",
+    bottom: 0,
+    paddingHorizontal:10,
+    backgroundColor: "white",
+    marginLeft:10,
+    marginBottom:10
   },
 });
 

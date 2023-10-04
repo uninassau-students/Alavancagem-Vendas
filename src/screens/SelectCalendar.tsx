@@ -219,7 +219,8 @@ const SelectCalendar = () => {
 };
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 30,
+    paddingTop: 10,
+    paddingBottom:60,
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
@@ -261,6 +262,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 20,
+    marginTop:50,
     width: "100%",
     position: "absolute",
     bottom: 20,

@@ -45,7 +45,7 @@ function Nicho() {
           ESCOLHA SEU NICHO
         </Text>
         <View>
-          <Text>{user && user.email}</Text>
+          <Text>{user && user.username}</Text>
         </View>
         <View style={styles.containerimg}>
           <View style={styles.containerimgtxt}>
@@ -62,7 +62,7 @@ function Nicho() {
                 }}
               />
             </TouchableOpacity>
-            <Text style={[styles.txt, { marginRight: 15, width: "90%" }]}>
+            <Text style={[styles.txt, { marginRight: 15,marginTop:15, width: "90%" }]}>
               Papelaria
             </Text>
           </View>
@@ -78,7 +78,7 @@ function Nicho() {
                 }}
               />
             </TouchableOpacity>
-            <Text style={[styles.txt, { width: "100%" }]}>Roupas</Text>
+            <Text style={[styles.txt, { width: "100%" ,marginTop:15,}]}>Roupas</Text>
           </View>
         </View>
         <View style={styles.containerdown}>

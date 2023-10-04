@@ -56,9 +56,11 @@ function Calendarj() {
   };
   LocaleConfig.defaultLocale = "pt-br";
   const [selectedDate, setSelectedDate] = useState<string | null>("2023-09-01");
+  const initialDate = "2023-09-01";
+  const initialTask = dailyTasksSetembro[initialDate] || "Nada a fazer hoje";
   const navigation = useNavigation();
 
-  const [dailyTask, setDailyTask] = useState<string>("");
+  const [dailyTask, setDailyTask] = useState<string>(initialTask);
 
 
   const handlepress = () => {
@@ -125,7 +127,7 @@ function Calendarj() {
       <Text
         style={{
           fontWeight: "400",
-          fontSize: 25,
+          fontSize: 20,
           marginTop: 10,
           marginLeft: 0,
           justifyContent: "center",
@@ -178,9 +180,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    position: "relative",
+    position: "absolute",
     width: "100%",
-    bottom: "-40%",
+    bottom: 0,
+    paddingHorizontal:10,
+    backgroundColor: "white",
+    marginLeft:10,
+    marginBottom:10
   },
 });
 
