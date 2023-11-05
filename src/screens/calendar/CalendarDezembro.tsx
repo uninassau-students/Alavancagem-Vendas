@@ -13,7 +13,7 @@ interface Day {
   dateString: string;
 }
 
-function Calendarj() {
+function CalendarDezembro() {
   LocaleConfig.locales["pt-br"] = {
     monthNames: [
       "Janeiro",
@@ -221,4 +221,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Calendarj;
+export default CalendarDezembro;

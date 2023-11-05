@@ -13,7 +13,7 @@ interface Day {
   dateString: string;
 }
 
-function CalendarSetembro() {
+function CalendarSetembroRoupas() {
   LocaleConfig.locales["pt-br"] = {
     monthNames: [
       "Janeiro",
@@ -222,4 +222,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CalendarSetembro;
+export default CalendarSetembroRoupas;

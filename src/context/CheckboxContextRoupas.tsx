@@ -14,7 +14,7 @@ type CheckboxContextType = {
 
 const CheckboxContext = createContext<CheckboxContextType | undefined>(undefined);
 
-export function CheckboxProvider({ children }: CheckboxProviderProps): JSX.Element {
+export function CheckboxProviderRoupas({ children }: CheckboxProviderProps): JSX.Element {
   const [check, setCheck] = useState(initialCheck);
 
   // Recupere AsyncStorage ao montar componente !!!

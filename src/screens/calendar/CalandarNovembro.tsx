@@ -11,7 +11,7 @@ interface Day {
   dateString: string;
 }
 
-function Calendarj() {
+function CalendarNovembro() {
   const [selectedDate, setSelectedDate] = useState<string | null>("2023-11-01");
   const initialDate = "2023-11-01";
   const initialTask = dailyTasksNovembro[initialDate] || "Nada a fazer hoje";
@@ -174,4 +174,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Calendarj;
+export default CalendarNovembro;

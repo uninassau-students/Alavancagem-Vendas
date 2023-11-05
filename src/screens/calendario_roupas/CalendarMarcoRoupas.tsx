@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React, { useState,useEffect } from "react";
+import { StyleSheet, View, Text} from "react-native";
 import { Calendar } from "react-native-calendars";
-import { Button, CheckBox } from "react-native-elements";
+import { Button,CheckBox} from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
-import { useCheckbox } from '../../context/CheckboxContext';
-import { Center } from "native-base";
 import { LocaleConfig } from "react-native-calendars";
-import { dailyTasksSetembro } from "../../lib/task";
+import { dailyTasksMarco } from "../../lib/task";
+import { useCheckbox } from '../../context/CheckboxContext';
+import Day from "react-native-calendars/src/calendar/day";
 interface Day {
   dateString: string;
+  day: number;
+  month: number;
+  year: number;
 }
-
-function CalendarSetembro() {
+function CalendarMarcoRoupas() {
+  
   LocaleConfig.locales["pt-br"] = {
     monthNames: [
       "Janeiro",
@@ -55,36 +58,39 @@ function CalendarSetembro() {
     dayNamesShort: ["Dom.", "Seg.", "Ter.", "Qua.", "Qui.", "Sex.", "Sáb."],
     today: "Hoje",
   };
-  LocaleConfig.defaultLocale = "pt-br";
-  const [selectedDate, setSelectedDate] = useState<string | null>("2023-09-01");
-  const initialDate = "2023-09-01";
-  const initialTask = dailyTasksSetembro[initialDate] || "Nada a fazer hoje";
+  interface Day {
+    dateString: any;
+    day: number;
+    month: number;
+    year: number;
+  }
+  const initialDate = "2023-03-01";
+  const initialTask = dailyTasksMarco[initialDate] || "Nada a fazer hoje";
   const navigation = useNavigation();
-
-
+  LocaleConfig.defaultLocale = "pt-br";
+  const [selectedDate, setSelectedDate] = useState<string | null | number >("2023-03-01");
   const { check, setCheck } = useCheckbox();
-
-
+ 
+  
   const [dailyTask, setDailyTask] = useState<string>(initialTask);
   console.log(selectedDate)
-  console.log(check)
+  console.log(check) 
 
-  useEffect(() => {
-    if (selectedDate) {
-      const isChecked = check[selectedDate] || true;
-
-      if (isChecked === undefined) {
-        setCheck({ ...check, [selectedDate]: false });
-      } else if (isChecked === true) {
-        setCheck({ ...check });
-      } else {
-        setCheck({ ...check, [selectedDate]: false });
-      }
-      console.log(isChecked)
+useEffect(() => {
+  if (selectedDate) {
+    const isChecked = check[selectedDate] || true;
+    
+    if (isChecked === undefined) {
+      setCheck({ ...check, [selectedDate]: false });
+    } else if (isChecked === true) {
+      setCheck({ ...check });
+    }else {
+      setCheck({ ...check, [selectedDate]: false });
     }
-
-  }, [selectedDate]);
-
+    console.log(isChecked) 
+  }
+  
+}, [selectedDate]);
 
   const handlepress = () => {
     console.log("Voltando");
@@ -95,13 +101,12 @@ function CalendarSetembro() {
     console.log("Home");
     navigation.navigate("Login");
   };
-
   const onDayPress = (day: Day) => {
     setSelectedDate(day.dateString);
 
     // Verifique se há uma tarefa para o dia clicado
-    if (dailyTasksSetembro[day.dateString]) {
-      setDailyTask(dailyTasksSetembro[day.dateString]);
+    if (dailyTasksMarco[day.dateString]) {
+      setDailyTask(dailyTasksMarco[day.dateString]);
     } else {
       // Se não houver tarefa definida, você pode definir uma mensagem padrão ou deixá-la vazia
       setDailyTask("Nada a fazer hoje");
@@ -113,10 +118,11 @@ function CalendarSetembro() {
     markedDates[selectedDate] = { dotColor: "blue", selected: true };
   }
   const renderHeader = () => null;
+ 
 
   return (
     <View style={styles.container}>
-      <Text style={styles.txt}>Setembro</Text>
+      <Text style={styles.txt}>Março</Text>
       <Calendar
         onDayPress={onDayPress}
         markedDates={markedDates}
@@ -130,9 +136,9 @@ function CalendarSetembro() {
           dotColor: "blue",
           selectedDotColor: "white",
         }}
-        current={"2023-09-01"}
-        minDate={"2023-09-01"}
-        maxDate={"2023-09-30"}
+        current={"2023-03-01"}
+        minDate={"2023-02-01"}
+        maxDate={"2023-03-31"}
         hideArrows={true}
         hideMonthTitle={true}
         renderHeader={renderHeader}
@@ -141,7 +147,7 @@ function CalendarSetembro() {
         style={{
           fontWeight: "500",
           fontSize: 22,
-          marginTop: 40,
+          marginTop: 10,
           marginLeft: 20,
         }}
       >
@@ -152,23 +158,22 @@ function CalendarSetembro() {
           fontWeight: "400",
           fontSize: 20,
           marginTop: 10,
-          marginLeft: 0,
+          marginLeft: 20,
           justifyContent: "center",
           paddingTop: 80,
-          textAlign: "center",
         }}
       >
         {dailyTask}
-
       </Text>
+    
       <CheckBox
-        checked={check[selectedDate || ""] || false}
-        onPress={() => {
-          const updatedCheck = { ...check };
-          updatedCheck[selectedDate || ""] = !updatedCheck[selectedDate || ""];
-          setCheck(updatedCheck);
-        }}
-      />
+  checked={check[selectedDate || ""] || false}
+  onPress={() => {
+    const updatedCheck = { ...check };
+    updatedCheck[selectedDate || ""] = !updatedCheck[selectedDate || ""];
+    setCheck(updatedCheck);
+  }}
+/>
 
       <View style={styles.bottomButtons}>
         <Button
@@ -215,11 +220,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "100%",
     bottom: 0,
-    paddingHorizontal: 10,
+    paddingHorizontal:10,
     backgroundColor: "white",
-    marginLeft: 10,
-    marginBottom: 10
+    marginLeft:10,
+    marginBottom:10
   },
 });
 
-export default CalendarSetembro;
+export default CalendarMarcoRoupas;
