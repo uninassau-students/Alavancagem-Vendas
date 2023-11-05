@@ -6,7 +6,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
 import { useCheckbox } from '../../context/CheckboxContext';
-import { dailyTasksNovembro } from "../../lib/task";
+import { dailyTasksNovembro } from "../../lib/taskRoupas";
 interface Day {
   dateString: string;
 }
@@ -41,8 +41,8 @@ function CalendarNovembroRoupas() {
   }, [selectedDate]);
 
   const handlepress = () => {
-    console.log("Voltando");
-    navigation.navigate("SelectCalendar");
+    console.log("Voltando | Roupas");
+    navigation.navigate("SelectCalendarRoupas");
   };
 
   const handlepressHome = () => {

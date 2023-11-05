@@ -7,7 +7,7 @@ import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
 import { useCheckbox } from '../../context/CheckboxContext';
 import { LocaleConfig } from "react-native-calendars";
-import { dailyTasksJunho } from "../../lib/task";
+import { dailyTasksJunho, IDailyProps  } from "../../lib/taskRoupas";
 interface Day {
   dateString: string;
 }
@@ -84,8 +84,8 @@ function CalendarJunhoRoupas() {
   }, [selectedDate]);
 
   const handlepress = () => {
-    console.log("Voltando");
-    navigation.navigate("SelectCalendar");
+    console.log("Voltando | Roupas");
+    navigation.navigate("SelectCalendarRoupas");
   };
 
   const handlepressHome = () => {

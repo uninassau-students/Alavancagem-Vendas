@@ -18,8 +18,19 @@ export declare global {
       CalendarNovembro: undefined;
       CalendarDezembro: undefined;
 
-      SelectCalendarRoupas:undefined;
-      CalendarJaneiroRoupas:undefined;
+      SelectCalendarRoupas: undefined;
+      CalendarJaneiroRoupas: undefined;
+      CalendarFevereiroRoupas: undefined;
+      CalendarMarcoRoupas: undefined;
+      CalendarAbrilRoupas: undefined;
+      CalendarMaioRoupas: undefined;
+      CalendarJunhoRoupas: undefined;
+      CalendarJulhoRoupas: undefined;
+      CalendarAgostoRoupas: undefined;
+      CalendarSetembroRoupas: undefined;
+      CalendarOutubroRoupas: undefined;
+      CalendarNovembroRoupas: undefined;
+      CalendarDezembroRoupas: undefined;
 
     }
   }

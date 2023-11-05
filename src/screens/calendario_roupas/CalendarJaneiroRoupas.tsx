@@ -8,7 +8,6 @@ import { useNavigation } from "@react-navigation/native";
 import { useCheckbox } from '../../context/CheckboxContext';
 import { LocaleConfig } from "react-native-calendars";
 import { dailyTasksJaneiro, IDailyProps } from "../../lib/taskRoupas";
-
 interface Day {
   dateString: string;
 }
@@ -87,8 +86,8 @@ function CalendarJaneiroRoupas() {
 
 
   const handlePress = () => {
-    console.log("Voltando");
-    navigation.navigate("SelectCalendar");
+    console.log("Voltando | Roupas" );
+    navigation.navigate("SelectCalendarRoupas");
   };
 
   const handlePressHome = () => {

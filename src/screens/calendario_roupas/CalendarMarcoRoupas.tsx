@@ -6,7 +6,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
 import { LocaleConfig } from "react-native-calendars";
-import { dailyTasksMarco } from "../../lib/task";
+import { dailyTasksMarco } from "../../lib/taskRoupas";
 import { useCheckbox } from '../../context/CheckboxContext';
 import Day from "react-native-calendars/src/calendar/day";
 interface Day {
@@ -93,8 +93,8 @@ useEffect(() => {
 }, [selectedDate]);
 
   const handlepress = () => {
-    console.log("Voltando");
-    navigation.navigate("SelectCalendar");
+    console.log("Voltando | Roupas");
+    navigation.navigate("SelectCalendarRoupas");
   };
 
   const handlepressHome = () => {

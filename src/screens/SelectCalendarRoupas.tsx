@@ -23,49 +23,59 @@ const SelectCalendarRoupas = () => {
     navigation.navigate("CalendarJaneiroRoupas");
   };
   const handlePressF = () => {
-    console.log("indo pro calendario");
-    navigation.navigate("Calendarf");
-  };
-  const handlePressM = () => {
-    console.log("indo pro calendario");
-    navigation.navigate("Calendarm");
-  };
-  const handlePressA = () => {
-    console.log("indo pro calendario");
-    navigation.navigate("Calendara");
-  };
-  const handlePressMA = () => {
-    console.log("indo pro calendario");
-    navigation.navigate("Calendarma");
-  };
-  const handlePressJUN = () => {
-    console.log("indo pro calendario");
-    navigation.navigate("Calendarjun");
-  };
-  const handlePressJulho = () => {
-    console.log("indo pro calendário");
-    navigation.navigate("CalendarJulho");
-  };
-  const handlePressAgosto = () => {
-    console.log("indo pro calendário");
-    navigation.navigate("CalendarAgosto");
-  };
-  const handlePressSetembro = () => {
-    console.log("indo pro calendário");
-    navigation.navigate("CalendarSetembro");
-  };
-  const handlePressOutubro = () => {
-    console.log("indo pro calendário");
-    navigation.navigate("CalendarOutubro");
-  };
-  const handlePressNovembro = () => {
-    console.log("indo pro calendário");
-    navigation.navigate("CalendarNovembro");
-  };
-  const handlePressDezembro = () => {
-    console.log("indo pro calendário");
-    navigation.navigate("CalendarDezembro");
-  };
+    console.log("Indo para o Calendário de Roupas | Fevereiro");
+    navigation.navigate("CalendarFevereiroRoupas");
+};
+
+const handlePressM = () => {
+    console.log("Indo para o Calendário de Roupas | Março");
+    navigation.navigate("CalendarMarcoRoupas");
+};
+
+const handlePressA = () => {
+    console.log("Indo para o Calendário de Roupas | Abril");
+    navigation.navigate("CalendarAbrilRoupas");
+};
+
+const handlePressMai = () => {
+    console.log("Indo para o Calendário de Roupas | Maio");
+    navigation.navigate("CalendarMaioRoupas");
+};
+
+const handlePressJun = () => {
+    console.log("Indo para o Calendário de Roupas | Junho");
+    navigation.navigate("CalendarJunhoRoupas");
+};
+
+const handlePressJul = () => {
+    console.log("Indo para o Calendário de Roupas | Julho");
+    navigation.navigate("CalendarJulhoRoupas");
+};
+
+const handlePressAgo = () => {
+    console.log("Indo para o Calendário de Roupas | Agosto");
+    navigation.navigate("CalendarAgostoRoupas");
+};
+
+const handlePressSet = () => {
+    console.log("Indo para o Calendário de Roupas | Setembro");
+    navigation.navigate("CalendarSetembroRoupas");
+};
+
+const handlePressOut = () => {
+    console.log("Indo para o Calendário de Roupas | Outubro");
+    navigation.navigate("CalendarOutubroRoupas");
+};
+
+const handlePressN = () => {
+    console.log("Indo para o Calendário de Roupas | Novembro");
+    navigation.navigate("CalendarNovembroRoupas");
+};
+
+const handlePressDez = () => {
+    console.log("Indo para o Calendário de Roupas | Dezembro");
+    navigation.navigate("CalendarDezembroRoupas");
+};
 
   return (
     <ScrollView style={{ flex: 1 }}>
@@ -116,7 +126,7 @@ const SelectCalendarRoupas = () => {
 
         <View style={styles.row}>
           <View style={styles.imageContainer}>
-            <TouchableOpacity style={{}} onPress={handlePressMA}>
+            <TouchableOpacity style={{}} onPress={handlePressMai}>
               <Image
                 source={require("../assets1/CalendarPng/maio.png")}
                 style={styles.image}
@@ -126,7 +136,7 @@ const SelectCalendarRoupas = () => {
           </View>
 
           <View style={styles.imageContainer}>
-            <TouchableOpacity style={{}} onPress={handlePressJUN}>
+            <TouchableOpacity style={{}} onPress={handlePressJun}>
               <Image
                 source={require("../assets1/CalendarPng/junho.png")}
                 style={styles.image}
@@ -138,7 +148,7 @@ const SelectCalendarRoupas = () => {
 
         <View style={styles.row}>
           <View style={styles.imageContainer}>
-            <TouchableOpacity style={{}} onPress={handlePressJulho}>
+            <TouchableOpacity style={{}} onPress={handlePressJul}>
               <Image
                 source={require("../assets1/CalendarPng/julho.png")}
                 style={styles.image}
@@ -148,7 +158,7 @@ const SelectCalendarRoupas = () => {
           </View>
 
           <View style={styles.imageContainer}>
-            <TouchableOpacity style={{}} onPress={handlePressAgosto}>
+            <TouchableOpacity style={{}} onPress={handlePressAgo}>
               <Image
                 source={require("../assets1/CalendarPng/agosto.png")}
                 style={styles.image}
@@ -160,7 +170,7 @@ const SelectCalendarRoupas = () => {
 
         <View style={styles.row}>
           <View style={styles.imageContainer}>
-            <TouchableOpacity style={{}} onPress={handlePressSetembro}>
+            <TouchableOpacity style={{}} onPress={handlePressSet}>
               <Image
                 source={require("../assets1/CalendarPng/setembro.png")}
                 style={styles.image}
@@ -169,7 +179,7 @@ const SelectCalendarRoupas = () => {
             <Text style={styles.text}>Setembro</Text>
           </View>
           <View style={styles.imageContainer}>
-            <TouchableOpacity style={{}} onPress={handlePressOutubro}>
+            <TouchableOpacity style={{}} onPress={handlePressOut}>
               <Image
                 source={require("../assets1/CalendarPng/outubro.png")}
                 style={styles.image}
@@ -181,7 +191,7 @@ const SelectCalendarRoupas = () => {
 
         <View style={styles.row}>
           <View style={styles.imageContainer}>
-            <TouchableOpacity style={{}} onPress={handlePressNovembro}>
+            <TouchableOpacity style={{}} onPress={handlePressN}>
               <Image
                 source={require("../assets1/CalendarPng/novembro.png")}
                 style={styles.image}
@@ -190,7 +200,7 @@ const SelectCalendarRoupas = () => {
             <Text style={styles.text}>Novembro</Text>
           </View>
           <View style={styles.imageContainer}>
-            <TouchableOpacity style={{}} onPress={handlePressDezembro}>
+            <TouchableOpacity style={{}} onPress={handlePressDez}>
               <Image
                 source={require("../assets1/CalendarPng/dezembro.png")}
                 style={styles.image}
