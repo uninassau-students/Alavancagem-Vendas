@@ -8,12 +8,12 @@ import { useNavigation } from "@react-navigation/native";
 import { useCheckbox } from '../../context/CheckboxContext';
 import { Center } from "native-base";
 import { LocaleConfig } from "react-native-calendars";
-import { dailyTasksSetembro } from "../../lib/task";
+import { dailyTasksSetembro } from "../../lib/taskRoupas";
 interface Day {
   dateString: string;
 }
 
-function CalendarSetembro() {
+function CalendarSetembroRoupas() {
   LocaleConfig.locales["pt-br"] = {
     monthNames: [
       "Janeiro",
@@ -87,8 +87,8 @@ function CalendarSetembro() {
 
 
   const handlepress = () => {
-    console.log("Voltando");
-    navigation.navigate("SelectCalendar");
+    console.log("Voltando | Roupas");
+    navigation.navigate("SelectCalendarRoupas");
   };
 
   const handlepressHome = () => {
@@ -222,4 +222,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CalendarSetembro;
+export default CalendarSetembroRoupas;

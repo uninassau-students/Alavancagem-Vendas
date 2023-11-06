@@ -13,7 +13,7 @@ interface Day {
   dateString: string;
 }
 
-function Calendarj() {
+function CalendarOutubro() {
   const [selectedDate, setSelectedDate] = useState<string | null>("2023-10-01");
   const initialDate = "2023-10-01";
   const initialTask = dailyTasksOutubro[initialDate] || "Nada a fazer hoje";
@@ -179,4 +179,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Calendarj;
+export default CalendarOutubro;

@@ -8,59 +8,16 @@ import { useNavigation } from "@react-navigation/native";
 import { useCheckbox } from '../../context/CheckboxContext';
 import { Center } from "native-base";
 import { LocaleConfig } from "react-native-calendars";
-import { dailyTasksSetembro } from "../../lib/task";
+import { dailyTasksOutubro } from "../../lib/taskRoupas";
 interface Day {
   dateString: string;
 }
 
-function CalendarSetembro() {
-  LocaleConfig.locales["pt-br"] = {
-    monthNames: [
-      "Janeiro",
-      "Fevereiro",
-      "Março",
-      "Abril",
-      "Maio",
-      "Junho",
-      "Julho",
-      "Agosto",
-      "Setembro",
-      "Outubro",
-      "Novembro",
-      "Dezembro",
-    ],
-    monthNamesShort: [
-      "Jan",
-      "Fev",
-      "Mar",
-      "Abr",
-      "Mai",
-      "Jun",
-      "Jul",
-      "Ago",
-      "Set",
-      "Out",
-      "Nov",
-      "Dez",
-    ],
-    dayNames: [
-      "Domingo",
-      "Segunda",
-      "Terça",
-      "Quarta",
-      "Quinta",
-      "Sexta",
-      "Sábado",
-    ],
-    dayNamesShort: ["Dom.", "Seg.", "Ter.", "Qua.", "Qui.", "Sex.", "Sáb."],
-    today: "Hoje",
-  };
-  LocaleConfig.defaultLocale = "pt-br";
-  const [selectedDate, setSelectedDate] = useState<string | null>("2023-09-01");
-  const initialDate = "2023-09-01";
-  const initialTask = dailyTasksSetembro[initialDate] || "Nada a fazer hoje";
+function CalendarOutubroRoupas() {
+  const [selectedDate, setSelectedDate] = useState<string | null>("2023-10-01");
+  const initialDate = "2023-10-01";
+  const initialTask = dailyTasksOutubro[initialDate] || "Nada a fazer hoje";
   const navigation = useNavigation();
-
 
   const { check, setCheck } = useCheckbox();
 
@@ -87,8 +44,8 @@ function CalendarSetembro() {
 
 
   const handlepress = () => {
-    console.log("Voltando");
-    navigation.navigate("SelectCalendar");
+    console.log("Voltando | Roupas");
+    navigation.navigate("SelectCalendarRoupas");
   };
 
   const handlepressHome = () => {
@@ -100,11 +57,11 @@ function CalendarSetembro() {
     setSelectedDate(day.dateString);
 
     // Verifique se há uma tarefa para o dia clicado
-    if (dailyTasksSetembro[day.dateString]) {
-      setDailyTask(dailyTasksSetembro[day.dateString]);
+    if (dailyTasksOutubro[day.dateString]) {
+      setDailyTask(dailyTasksOutubro[day.dateString]);
     } else {
       // Se não houver tarefa definida, você pode definir uma mensagem padrão ou deixá-la vazia
-      setDailyTask("Nada a fazer hoje");
+      setDailyTask("Ainda estamos em desenvolvimento...");
     }
   };
 
@@ -116,7 +73,7 @@ function CalendarSetembro() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.txt}>Setembro</Text>
+      <Text style={styles.txt}>Outubro</Text>
       <Calendar
         onDayPress={onDayPress}
         markedDates={markedDates}
@@ -130,9 +87,9 @@ function CalendarSetembro() {
           dotColor: "blue",
           selectedDotColor: "white",
         }}
-        current={"2023-09-01"}
-        minDate={"2023-09-01"}
-        maxDate={"2023-09-30"}
+        current={"2023-10-01"}
+        minDate={"2023-10-01"}
+        maxDate={"2023-10-31"}
         hideArrows={true}
         hideMonthTitle={true}
         renderHeader={renderHeader}
@@ -222,4 +179,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CalendarSetembro;
+export default CalendarOutubroRoupas;

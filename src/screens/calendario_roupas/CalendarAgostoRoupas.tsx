@@ -8,12 +8,12 @@ import { useNavigation } from "@react-navigation/native";
 import { useCheckbox } from '../../context/CheckboxContext';
 import { Center } from "native-base";
 import { LocaleConfig } from "react-native-calendars";
-import { dailyTasksSetembro } from "../../lib/task";
+import { dailyTasksAgosto } from "../../lib/taskRoupas";
 interface Day {
   dateString: string;
 }
 
-function CalendarSetembro() {
+function CalendarAgostoRoupas() {
   LocaleConfig.locales["pt-br"] = {
     monthNames: [
       "Janeiro",
@@ -56,9 +56,9 @@ function CalendarSetembro() {
     today: "Hoje",
   };
   LocaleConfig.defaultLocale = "pt-br";
-  const [selectedDate, setSelectedDate] = useState<string | null>("2023-09-01");
-  const initialDate = "2023-09-01";
-  const initialTask = dailyTasksSetembro[initialDate] || "Nada a fazer hoje";
+  const [selectedDate, setSelectedDate] = useState<string | null>("2023-08-01");
+  const initialDate = "2023-08-01";
+  const initialTask = dailyTasksAgosto[initialDate] || "Nada a fazer hoje";
   const navigation = useNavigation();
 
 
@@ -85,10 +85,9 @@ function CalendarSetembro() {
 
   }, [selectedDate]);
 
-
   const handlepress = () => {
-    console.log("Voltando");
-    navigation.navigate("SelectCalendar");
+    console.log("Voltando | Roupas");
+    navigation.navigate("SelectCalendarRoupas");
   };
 
   const handlepressHome = () => {
@@ -100,8 +99,8 @@ function CalendarSetembro() {
     setSelectedDate(day.dateString);
 
     // Verifique se há uma tarefa para o dia clicado
-    if (dailyTasksSetembro[day.dateString]) {
-      setDailyTask(dailyTasksSetembro[day.dateString]);
+    if (dailyTasksAgosto[day.dateString]) {
+      setDailyTask(dailyTasksAgosto[day.dateString]);
     } else {
       // Se não houver tarefa definida, você pode definir uma mensagem padrão ou deixá-la vazia
       setDailyTask("Nada a fazer hoje");
@@ -116,7 +115,7 @@ function CalendarSetembro() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.txt}>Setembro</Text>
+      <Text style={styles.txt}>Agosto</Text>
       <Calendar
         onDayPress={onDayPress}
         markedDates={markedDates}
@@ -130,9 +129,9 @@ function CalendarSetembro() {
           dotColor: "blue",
           selectedDotColor: "white",
         }}
-        current={"2023-09-01"}
-        minDate={"2023-09-01"}
-        maxDate={"2023-09-30"}
+        current={"2023-08-01"}
+        minDate={"2023-08-01"}
+        maxDate={"2023-08-31"}
         hideArrows={true}
         hideMonthTitle={true}
         renderHeader={renderHeader}
@@ -160,8 +159,7 @@ function CalendarSetembro() {
       >
         {dailyTask}
 
-      </Text>
-      <CheckBox
+      </Text><CheckBox
         checked={check[selectedDate || ""] || false}
         onPress={() => {
           const updatedCheck = { ...check };
@@ -222,4 +220,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CalendarSetembro;
+export default CalendarAgostoRoupas;

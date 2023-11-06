@@ -6,14 +6,14 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
 import { useCheckbox } from '../../context/CheckboxContext';
-import { Center } from "native-base";
 import { LocaleConfig } from "react-native-calendars";
-import { dailyTasksSetembro } from "../../lib/task";
+import { dailyTasksAbril, IDailyProps  } from "../../lib/taskRoupas";
+
 interface Day {
   dateString: string;
 }
 
-function CalendarSetembro() {
+function CalendarAbrilRoupas() {
   LocaleConfig.locales["pt-br"] = {
     monthNames: [
       "Janeiro",
@@ -56,11 +56,10 @@ function CalendarSetembro() {
     today: "Hoje",
   };
   LocaleConfig.defaultLocale = "pt-br";
-  const [selectedDate, setSelectedDate] = useState<string | null>("2023-09-01");
-  const initialDate = "2023-09-01";
-  const initialTask = dailyTasksSetembro[initialDate] || "Nada a fazer hoje";
+  const [selectedDate, setSelectedDate] = useState<string | null>("2023-04-01");
+  const initialDate = "2023-04-01";
+  const initialTask = dailyTasksAbril[initialDate] || "Nada a fazer hoje";
   const navigation = useNavigation();
-
 
   const { check, setCheck } = useCheckbox();
 
@@ -87,8 +86,8 @@ function CalendarSetembro() {
 
 
   const handlepress = () => {
-    console.log("Voltando");
-    navigation.navigate("SelectCalendar");
+    console.log("Voltando | Roupas");
+    navigation.navigate("SelectCalendarRoupas");
   };
 
   const handlepressHome = () => {
@@ -100,8 +99,8 @@ function CalendarSetembro() {
     setSelectedDate(day.dateString);
 
     // Verifique se há uma tarefa para o dia clicado
-    if (dailyTasksSetembro[day.dateString]) {
-      setDailyTask(dailyTasksSetembro[day.dateString]);
+    if (dailyTasksAbril[day.dateString]) {
+      setDailyTask(dailyTasksAbril[day.dateString]);
     } else {
       // Se não houver tarefa definida, você pode definir uma mensagem padrão ou deixá-la vazia
       setDailyTask("Nada a fazer hoje");
@@ -116,7 +115,7 @@ function CalendarSetembro() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.txt}>Setembro</Text>
+      <Text style={styles.txt}>Abril</Text>
       <Calendar
         onDayPress={onDayPress}
         markedDates={markedDates}
@@ -130,9 +129,9 @@ function CalendarSetembro() {
           dotColor: "blue",
           selectedDotColor: "white",
         }}
-        current={"2023-09-01"}
-        minDate={"2023-09-01"}
-        maxDate={"2023-09-30"}
+        current={"2023-04-01"}
+        minDate={"2023-03-04"}
+        maxDate={"2023-04-30"}
         hideArrows={true}
         hideMonthTitle={true}
         renderHeader={renderHeader}
@@ -141,7 +140,7 @@ function CalendarSetembro() {
         style={{
           fontWeight: "500",
           fontSize: 22,
-          marginTop: 40,
+          marginTop: 10,
           marginLeft: 20,
         }}
       >
@@ -152,14 +151,12 @@ function CalendarSetembro() {
           fontWeight: "400",
           fontSize: 20,
           marginTop: 10,
-          marginLeft: 0,
+          marginLeft: 20,
           justifyContent: "center",
           paddingTop: 80,
-          textAlign: "center",
         }}
       >
         {dailyTask}
-
       </Text>
       <CheckBox
         checked={check[selectedDate || ""] || false}
@@ -222,4 +219,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CalendarSetembro;
+export default CalendarAbrilRoupas;

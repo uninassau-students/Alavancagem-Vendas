@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,useEffect} from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Calendar } from "react-native-calendars";
-import { Button, CheckBox } from "react-native-elements";
+import { Button,CheckBox } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
 import { useCheckbox } from '../../context/CheckboxContext';
-import { Center } from "native-base";
 import { LocaleConfig } from "react-native-calendars";
-import { dailyTasksSetembro } from "../../lib/task";
+import { dailyTasksJunho, IDailyProps  } from "../../lib/taskRoupas";
 interface Day {
   dateString: string;
 }
 
-function CalendarSetembro() {
+function CalendarJunhoRoupas() {
   LocaleConfig.locales["pt-br"] = {
     monthNames: [
       "Janeiro",
@@ -56,11 +55,10 @@ function CalendarSetembro() {
     today: "Hoje",
   };
   LocaleConfig.defaultLocale = "pt-br";
-  const [selectedDate, setSelectedDate] = useState<string | null>("2023-09-01");
-  const initialDate = "2023-09-01";
-  const initialTask = dailyTasksSetembro[initialDate] || "Nada a fazer hoje";
+  const [selectedDate, setSelectedDate] = useState<string | null>("2023-06-01");
+  const initialDate = "2023-06-01";
+  const initialTask = dailyTasksJunho[initialDate] || "Nada a fazer hoje";
   const navigation = useNavigation();
-
 
   const { check, setCheck } = useCheckbox();
 
@@ -85,23 +83,21 @@ function CalendarSetembro() {
 
   }, [selectedDate]);
 
-
   const handlepress = () => {
-    console.log("Voltando");
-    navigation.navigate("SelectCalendar");
+    console.log("Voltando | Roupas");
+    navigation.navigate("SelectCalendarRoupas");
   };
 
   const handlepressHome = () => {
     console.log("Home");
     navigation.navigate("Login");
   };
-
   const onDayPress = (day: Day) => {
     setSelectedDate(day.dateString);
 
     // Verifique se há uma tarefa para o dia clicado
-    if (dailyTasksSetembro[day.dateString]) {
-      setDailyTask(dailyTasksSetembro[day.dateString]);
+    if (dailyTasksJunho[day.dateString]) {
+      setDailyTask(dailyTasksJunho[day.dateString]);
     } else {
       // Se não houver tarefa definida, você pode definir uma mensagem padrão ou deixá-la vazia
       setDailyTask("Nada a fazer hoje");
@@ -116,7 +112,7 @@ function CalendarSetembro() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.txt}>Setembro</Text>
+      <Text style={styles.txt}>Junho</Text>
       <Calendar
         onDayPress={onDayPress}
         markedDates={markedDates}
@@ -130,9 +126,9 @@ function CalendarSetembro() {
           dotColor: "blue",
           selectedDotColor: "white",
         }}
-        current={"2023-09-01"}
-        minDate={"2023-09-01"}
-        maxDate={"2023-09-30"}
+        current={"2023-06-01"}
+        minDate={"2023-05-01"}
+        maxDate={"2023-06-31"}
         hideArrows={true}
         hideMonthTitle={true}
         renderHeader={renderHeader}
@@ -141,7 +137,7 @@ function CalendarSetembro() {
         style={{
           fontWeight: "500",
           fontSize: 22,
-          marginTop: 40,
+          marginTop: 10,
           marginLeft: 20,
         }}
       >
@@ -152,23 +148,21 @@ function CalendarSetembro() {
           fontWeight: "400",
           fontSize: 20,
           marginTop: 10,
-          marginLeft: 0,
+          marginLeft: 20,
           justifyContent: "center",
           paddingTop: 80,
-          textAlign: "center",
         }}
       >
         {dailyTask}
-
       </Text>
-      <CheckBox
-        checked={check[selectedDate || ""] || false}
-        onPress={() => {
-          const updatedCheck = { ...check };
-          updatedCheck[selectedDate || ""] = !updatedCheck[selectedDate || ""];
-          setCheck(updatedCheck);
-        }}
-      />
+<CheckBox
+  checked={check[selectedDate || ""] || false}
+  onPress={() => {
+    const updatedCheck = { ...check };
+    updatedCheck[selectedDate || ""] = !updatedCheck[selectedDate || ""];
+    setCheck(updatedCheck);
+  }}
+/>
 
       <View style={styles.bottomButtons}>
         <Button
@@ -215,11 +209,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "100%",
     bottom: 0,
-    paddingHorizontal: 10,
+    paddingHorizontal:10,
     backgroundColor: "white",
-    marginLeft: 10,
-    marginBottom: 10
+    marginLeft:10,
+    marginBottom:10
   },
 });
 
-export default CalendarSetembro;
+export default CalendarJunhoRoupas;

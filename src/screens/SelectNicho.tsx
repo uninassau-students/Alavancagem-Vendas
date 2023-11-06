@@ -24,7 +24,10 @@ function Nicho() {
   const handlePress = () => {
     navigation.navigate("SelectCalendar");
   };
-
+  const handlePressRoupas = ()=>{
+    console.log('Indo pra Seleção de Roupas')
+    navigation.navigate('SelectCalendarRoupas')
+  }
   console.log(user);
 
   return (
@@ -67,7 +70,7 @@ function Nicho() {
             </Text>
           </View>
           <View style={styles.containerimgtxt}>
-            <TouchableOpacity onPress={handlePress}>
+            <TouchableOpacity onPress={handlePressRoupas}>
               <Image
                 source={require("../assets1/roupas.png")}
                 style={{
