@@ -5,7 +5,7 @@ import { Button, CheckBox } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
-import { useCheckbox } from '../../context/CheckboxContext';
+import { useCheckbox } from "../../context/CheckboxContext";
 import { LocaleConfig } from "react-native-calendars";
 import { dailyTasksAbril } from "../../lib/task";
 
@@ -63,10 +63,9 @@ function Calendara() {
 
   const { check, setCheck } = useCheckbox();
 
-
   const [dailyTask, setDailyTask] = useState<string>(initialTask);
-  console.log(selectedDate)
-  console.log(check)
+  console.log(selectedDate);
+  console.log(check);
 
   useEffect(() => {
     if (selectedDate) {
@@ -79,11 +78,9 @@ function Calendara() {
       } else {
         setCheck({ ...check, [selectedDate]: false });
       }
-      console.log(isChecked)
+      console.log(isChecked);
     }
-
   }, [selectedDate]);
-
 
   const handlepress = () => {
     console.log("Voltando");
@@ -153,7 +150,7 @@ function Calendara() {
           marginTop: 10,
           marginLeft: 20,
           justifyContent: "center",
-          paddingTop: 80,
+          paddingTop: 70,
         }}
       >
         {dailyTask}
@@ -215,7 +212,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: "white",
     marginLeft: 10,
-    marginBottom: 10
+    marginBottom: 10,
   },
 });
 

@@ -34,7 +34,7 @@ export function Register() {
 
     try {
       setLoading(true);
-      const response = await api.post("/user", {
+      const response = await api.post("/user/create", {
         username: username,
         email: email,
         password: password,
