@@ -1,13 +1,13 @@
-import React, { useState,useEffect } from "react";
-import { StyleSheet, View, Text} from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, View, Text } from "react-native";
 import { Calendar } from "react-native-calendars";
-import { Button,CheckBox} from "react-native-elements";
+import { Button, CheckBox } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
 import { LocaleConfig } from "react-native-calendars";
 import { dailyTasksMarco } from "../../lib/task";
-import { useCheckbox } from '../../context/CheckboxContext';
+import { useCheckbox } from "../../context/CheckboxContext";
 import Day from "react-native-calendars/src/calendar/day";
 interface Day {
   dateString: string;
@@ -16,7 +16,6 @@ interface Day {
   year: number;
 }
 function Calendarm() {
-  
   LocaleConfig.locales["pt-br"] = {
     monthNames: [
       "Janeiro",
@@ -68,29 +67,29 @@ function Calendarm() {
   const initialTask = dailyTasksMarco[initialDate] || "Nada a fazer hoje";
   const navigation = useNavigation();
   LocaleConfig.defaultLocale = "pt-br";
-  const [selectedDate, setSelectedDate] = useState<string | null | number >("2023-03-01");
+  const [selectedDate, setSelectedDate] = useState<string | null | number>(
+    "2023-03-01"
+  );
   const { check, setCheck } = useCheckbox();
- 
-  
-  const [dailyTask, setDailyTask] = useState<string>(initialTask);
-  console.log(selectedDate)
-  console.log(check) 
 
-useEffect(() => {
-  if (selectedDate) {
-    const isChecked = check[selectedDate] || true;
-    
-    if (isChecked === undefined) {
-      setCheck({ ...check, [selectedDate]: false });
-    } else if (isChecked === true) {
-      setCheck({ ...check });
-    }else {
-      setCheck({ ...check, [selectedDate]: false });
+  const [dailyTask, setDailyTask] = useState<string>(initialTask);
+  console.log(selectedDate);
+  console.log(check);
+
+  useEffect(() => {
+    if (selectedDate) {
+      const isChecked = check[selectedDate] || true;
+
+      if (isChecked === undefined) {
+        setCheck({ ...check, [selectedDate]: false });
+      } else if (isChecked === true) {
+        setCheck({ ...check });
+      } else {
+        setCheck({ ...check, [selectedDate]: false });
+      }
+      console.log(isChecked);
     }
-    console.log(isChecked) 
-  }
-  
-}, [selectedDate]);
+  }, [selectedDate]);
 
   const handlepress = () => {
     console.log("Voltando");
@@ -118,7 +117,6 @@ useEffect(() => {
     markedDates[selectedDate] = { dotColor: "blue", selected: true };
   }
   const renderHeader = () => null;
- 
 
   return (
     <View style={styles.container}>
@@ -153,27 +151,30 @@ useEffect(() => {
       >
         O que você vai fazer:
       </Text>
-      <Text
-        style={{
-          fontWeight: "400",
-          fontSize: 20,
-          marginTop: 10,
-          marginLeft: 20,
-          justifyContent: "center",
-          paddingTop: 80,
-        }}
-      >
-        {dailyTask}
-      </Text>
-    
-      <CheckBox
-  checked={check[selectedDate || ""] || false}
-  onPress={() => {
-    const updatedCheck = { ...check };
-    updatedCheck[selectedDate || ""] = !updatedCheck[selectedDate || ""];
-    setCheck(updatedCheck);
-  }}
-/>
+      <View style={styles.seeTask}>
+        <CheckBox
+          checked={check[selectedDate || ""] || false}
+          onPress={() => {
+            const updatedCheck = { ...check };
+            updatedCheck[selectedDate || ""] =
+              !updatedCheck[selectedDate || ""];
+            setCheck(updatedCheck);
+          }}
+        />
+        <Text
+          style={{
+            fontWeight: "400",
+            fontSize: 25,
+            marginRight: 50,
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+            paddingTop: 50,
+          }}
+        >
+          {dailyTask}
+        </Text>
+      </View>
 
       <View style={styles.bottomButtons}>
         <Button
@@ -220,10 +221,20 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "100%",
     bottom: 0,
-    paddingHorizontal:10,
+    paddingHorizontal: 10,
     backgroundColor: "white",
-    marginLeft:10,
-    marginBottom:10
+    marginLeft: 10,
+    marginBottom: 10,
+  },
+
+  seeTask: {
+    width: "auto",
+    height: "auto",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    paddingHorizontal: 10,
   },
 });
 
