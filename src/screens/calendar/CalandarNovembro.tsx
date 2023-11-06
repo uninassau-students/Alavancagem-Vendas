@@ -99,28 +99,31 @@ function CalendarNovembro() {
       >
         O que você vai fazer:
       </Text>
-      <Text
-        style={{
-          fontWeight: "400",
-          fontSize: 20,
-          marginTop: 10,
-          marginLeft: 0,
-          justifyContent: "center",
-          alignItems: "center",
-          paddingTop: 80,
-          textAlign: "center",
-        }}
-      >
-        {dailyTask}
-      </Text>
-      <CheckBox
-        checked={check[selectedDate || ""] || false}
-        onPress={() => {
-          const updatedCheck = { ...check };
-          updatedCheck[selectedDate || ""] = !updatedCheck[selectedDate || ""];
-          setCheck(updatedCheck);
-        }}
-      />
+
+      <View style={styles.seeTask}>
+        <CheckBox
+          checked={check[selectedDate || ""] || false}
+          onPress={() => {
+            const updatedCheck = { ...check };
+            updatedCheck[selectedDate || ""] =
+              !updatedCheck[selectedDate || ""];
+            setCheck(updatedCheck);
+          }}
+        />
+        <Text
+          style={{
+            fontWeight: "400",
+            fontSize: 25,
+            marginRight: 50,
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+            paddingTop: 50,
+          }}
+        >
+          {dailyTask}
+        </Text>
+      </View>
       <View style={styles.bottomButtons}>
         <Button
           icon={<Icon name="keyboard-arrow-left" size={30} color="#9DD9E7" />}
@@ -170,6 +173,15 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     marginLeft: 10,
     marginBottom: 10,
+  },
+  seeTask: {
+    width: "auto",
+    height: "auto",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    paddingHorizontal: 10,
   },
 });
 
