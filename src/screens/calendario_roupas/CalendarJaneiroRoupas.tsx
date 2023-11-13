@@ -5,7 +5,7 @@ import { Button, CheckBox } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
-import { useCheckbox } from '../../context/CheckboxContext';
+import { useCheckbox } from "../../context/CheckboxContext";
 import { LocaleConfig } from "react-native-calendars";
 import { dailyTasksJaneiro, IDailyProps } from "../../lib/taskRoupas";
 interface Day {
@@ -13,7 +13,6 @@ interface Day {
 }
 
 function CalendarJaneiroRoupas() {
-
   LocaleConfig.locales["pt-br"] = {
     monthNames: [
       "Janeiro",
@@ -63,10 +62,9 @@ function CalendarJaneiroRoupas() {
 
   const { check, setCheck } = useCheckbox();
 
-
   const [dailyTask, setDailyTask] = useState<string>(initialTask);
-  console.log(selectedDate)
-  console.log(check)
+  console.log(selectedDate);
+  console.log(check);
 
   useEffect(() => {
     if (selectedDate) {
@@ -79,14 +77,12 @@ function CalendarJaneiroRoupas() {
       } else {
         setCheck({ ...check, [selectedDate]: false });
       }
-      console.log(isChecked)
+      console.log(isChecked);
     }
-
   }, [selectedDate]);
 
-
   const handlePress = () => {
-    console.log("Voltando | Roupas" );
+    console.log("Voltando | Roupas");
     navigation.navigate("SelectCalendarRoupas");
   };
 
@@ -136,19 +132,41 @@ function CalendarJaneiroRoupas() {
         hideMonthTitle={true}
         renderHeader={renderHeader}
       />
-      <Text style={styles.headerText}>O que você vai fazer:</Text>
-    
-        <Text style={styles.dailyTaskText}>{dailyTask}</Text>
-     
-
-      <CheckBox
-        checked={check[selectedDate || ""] || false}
-        onPress={() => {
-          const updatedCheck = { ...check };
-          updatedCheck[selectedDate || ""] = !updatedCheck[selectedDate || ""];
-          setCheck(updatedCheck);
+      <Text
+        style={{
+          fontWeight: "500",
+          fontSize: 22,
+          marginTop: 40,
+          marginLeft: 20,
         }}
-      />
+      >
+        O que você vai fazer:
+      </Text>
+
+      <View style={styles.seeTask}>
+        <CheckBox
+          checked={check[selectedDate || ""] || false}
+          onPress={() => {
+            const updatedCheck = { ...check };
+            updatedCheck[selectedDate || ""] =
+              !updatedCheck[selectedDate || ""];
+            setCheck(updatedCheck);
+          }}
+        />
+        <Text
+          style={{
+            fontWeight: "400",
+            fontSize: 25,
+            marginRight: 50,
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+            paddingTop: 50,
+          }}
+        >
+          {dailyTask}
+        </Text>
+      </View>
 
       <View style={styles.bottomButtons}>
         <Button
@@ -203,13 +221,22 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: "white",
     marginLeft: 10,
-    marginBottom: 10
+    marginBottom: 10,
   },
   button: {
     backgroundColor: "white",
     borderColor: "#9DD9E7",
     borderWidth: 3,
     borderRadius: 50,
+  },
+  seeTask: {
+    width: "auto",
+    height: "auto",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    paddingHorizontal: 10,
   },
 });
 

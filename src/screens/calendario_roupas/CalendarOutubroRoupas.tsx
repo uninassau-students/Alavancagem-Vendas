@@ -5,7 +5,7 @@ import { Button, CheckBox } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
-import { useCheckbox } from '../../context/CheckboxContext';
+import { useCheckbox } from "../../context/CheckboxContext";
 import { Center } from "native-base";
 import { LocaleConfig } from "react-native-calendars";
 import { dailyTasksOutubro } from "../../lib/taskRoupas";
@@ -21,10 +21,9 @@ function CalendarOutubroRoupas() {
 
   const { check, setCheck } = useCheckbox();
 
-
   const [dailyTask, setDailyTask] = useState<string>(initialTask);
-  console.log(selectedDate)
-  console.log(check)
+  console.log(selectedDate);
+  console.log(check);
 
   useEffect(() => {
     if (selectedDate) {
@@ -37,11 +36,9 @@ function CalendarOutubroRoupas() {
       } else {
         setCheck({ ...check, [selectedDate]: false });
       }
-      console.log(isChecked)
+      console.log(isChecked);
     }
-
   }, [selectedDate]);
-
 
   const handlepress = () => {
     console.log("Voltando | Roupas");
@@ -104,28 +101,30 @@ function CalendarOutubroRoupas() {
       >
         O que você vai fazer:
       </Text>
-      <Text
-        style={{
-          fontWeight: "400",
-          fontSize: 20,
-          marginTop: 10,
-          marginLeft: 0,
-          justifyContent: "center",
-          paddingTop: 80,
-          textAlign: "center",
-        }}
-      >
-        {dailyTask}
-
-      </Text>
-      <CheckBox
-        checked={check[selectedDate || ""] || false}
-        onPress={() => {
-          const updatedCheck = { ...check };
-          updatedCheck[selectedDate || ""] = !updatedCheck[selectedDate || ""];
-          setCheck(updatedCheck);
-        }}
-      />
+      <View style={styles.seeTask}>
+        <CheckBox
+          checked={check[selectedDate || ""] || false}
+          onPress={() => {
+            const updatedCheck = { ...check };
+            updatedCheck[selectedDate || ""] =
+              !updatedCheck[selectedDate || ""];
+            setCheck(updatedCheck);
+          }}
+        />
+        <Text
+          style={{
+            fontWeight: "400",
+            fontSize: 25,
+            marginRight: 50,
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
+            paddingTop: 50,
+          }}
+        >
+          {dailyTask}
+        </Text>
+      </View>
 
       <View style={styles.bottomButtons}>
         <Button
@@ -175,7 +174,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: "white",
     marginLeft: 10,
-    marginBottom: 10
+    marginBottom: 10,
+  },
+  seeTask: {
+    width: "auto",
+    height: "auto",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    paddingHorizontal: 10,
   },
 });
 
