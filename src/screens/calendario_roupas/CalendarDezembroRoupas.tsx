@@ -5,10 +5,11 @@ import { Button, CheckBox } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
-import { useCheckbox } from "../../context/CheckboxContext";
+
 import { Center } from "native-base";
 import { LocaleConfig } from "react-native-calendars";
 import { dailyTasksDezembro } from "../../lib/taskRoupas";
+import { useCheckboxRoupas } from "../../context/CheckboxContextRoupas";
 interface Day {
   dateString: string;
 }
@@ -61,7 +62,7 @@ function CalendarDezembroRoupas() {
   const initialTask = dailyTasksDezembro[initialDate] || "Nada a fazer hoje";
   const navigation = useNavigation();
 
-  const { check, setCheck } = useCheckbox();
+  const { check, setCheck } = useCheckboxRoupas();
 
   const [dailyTask, setDailyTask] = useState<string>(initialTask);
   console.log(selectedDate);

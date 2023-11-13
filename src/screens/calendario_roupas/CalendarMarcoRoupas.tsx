@@ -7,7 +7,7 @@ import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
 import { LocaleConfig } from "react-native-calendars";
 import { dailyTasksMarco } from "../../lib/taskRoupas";
-import { useCheckbox } from "../../context/CheckboxContext";
+import { useCheckboxRoupas } from "../../context/CheckboxContextRoupas";
 import Day from "react-native-calendars/src/calendar/day";
 interface Day {
   dateString: string;
@@ -70,7 +70,7 @@ function CalendarMarcoRoupas() {
   const [selectedDate, setSelectedDate] = useState<string | null | number>(
     "2023-03-01"
   );
-  const { check, setCheck } = useCheckbox();
+  const { check, setCheck } = useCheckboxRoupas();
 
   const [dailyTask, setDailyTask] = useState<string>(initialTask);
   console.log(selectedDate);

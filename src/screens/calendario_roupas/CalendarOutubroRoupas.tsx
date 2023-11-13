@@ -5,7 +5,7 @@ import { Button, CheckBox } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { MarkedDates } from "react-native-calendars/src/types";
 import { useNavigation } from "@react-navigation/native";
-import { useCheckbox } from "../../context/CheckboxContext";
+import { useCheckboxRoupas } from "../../context/CheckboxContextRoupas";
 import { Center } from "native-base";
 import { LocaleConfig } from "react-native-calendars";
 import { dailyTasksOutubro } from "../../lib/taskRoupas";
@@ -19,7 +19,7 @@ function CalendarOutubroRoupas() {
   const initialTask = dailyTasksOutubro[initialDate] || "Nada a fazer hoje";
   const navigation = useNavigation();
 
-  const { check, setCheck } = useCheckbox();
+  const { check, setCheck } = useCheckboxRoupas();
 
   const [dailyTask, setDailyTask] = useState<string>(initialTask);
   console.log(selectedDate);
