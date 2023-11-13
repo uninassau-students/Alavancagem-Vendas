@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const initialCheck = {}; 
+const initialCheck = {};
 
 type CheckboxProviderProps = {
   children: React.ReactNode;
@@ -12,21 +12,25 @@ type CheckboxContextType = {
   setCheck: React.Dispatch<React.SetStateAction<{ [date: string]: boolean }>>;
 };
 
-const CheckboxContext = createContext<CheckboxContextType | undefined>(undefined);
+const CheckboxContext = createContext<CheckboxContextType | undefined>(
+  undefined
+);
 
-export function CheckboxProviderRoupas({ children }: CheckboxProviderProps): JSX.Element {
+export function CheckboxProviderRoupas({
+  children,
+}: CheckboxProviderProps): JSX.Element {
   const [check, setCheck] = useState(initialCheck);
 
   // Recupere AsyncStorage ao montar componente !!!
   useEffect(() => {
     const loadCheckFromStorage = async () => {
       try {
-        const storedCheck = await AsyncStorage.getItem('check');
+        const storedCheck = await AsyncStorage.getItem("checkRoupas");
         if (storedCheck) {
           setCheck(JSON.parse(storedCheck));
         }
       } catch (error) {
-        console.error('Erro ao carregar o estado do AsyncStorage:', error);
+        console.error("Erro ao carregar o estado do AsyncStorage:", error);
       }
     };
 
@@ -37,9 +41,9 @@ export function CheckboxProviderRoupas({ children }: CheckboxProviderProps): JSX
   useEffect(() => {
     const saveCheckToStorage = async () => {
       try {
-        await AsyncStorage.setItem('check', JSON.stringify(check));
+        await AsyncStorage.setItem("checkRoupas", JSON.stringify(check));
       } catch (error) {
-        console.error('Erro ao salvar o estado do AsyncStorage:', error);
+        console.error("Erro ao salvar o estado do AsyncStorage:", error);
       }
     };
 
@@ -53,11 +57,11 @@ export function CheckboxProviderRoupas({ children }: CheckboxProviderProps): JSX
   );
 }
 
-export function useCheckbox() {
+export function useCheckboxRoupas() {
   const context = useContext(CheckboxContext);
 
   if (context === undefined) {
-    throw new Error('useCheckbox deve ser usado dentro de um CheckboxProvider');
+    throw new Error("useCheckbox deve ser usado dentro de um CheckboxProvider");
   }
 
   return context;
