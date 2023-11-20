@@ -163,14 +163,6 @@ function CalendarJulhoRoupas() {
           {dailyTask}
         </Text>
       </View>
-      <CheckBox
-        checked={check[selectedDate || ""] || false}
-        onPress={() => {
-          const updatedCheck = { ...check };
-          updatedCheck[selectedDate || ""] = !updatedCheck[selectedDate || ""];
-          setCheck(updatedCheck);
-        }}
-      />
 
       <View style={styles.bottomButtons}>
         <Button

@@ -123,14 +123,7 @@ function CalendarNovembroRoupas() {
           {dailyTask}
         </Text>
       </View>
-      <CheckBox
-        checked={check[selectedDate || ""] || false}
-        onPress={() => {
-          const updatedCheck = { ...check };
-          updatedCheck[selectedDate || ""] = !updatedCheck[selectedDate || ""];
-          setCheck(updatedCheck);
-        }}
-      />
+      
       <View style={styles.bottomButtons}>
         <Button
           icon={<Icon name="keyboard-arrow-left" size={30} color="#9DD9E7" />}
