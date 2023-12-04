@@ -8,7 +8,6 @@ import { useAuth } from "../context/useAuth";
 function LoginHome() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
   const [isLoading, setLoading] = useState(false);
   const navigation = useNavigation();
   const toast = useToast();
@@ -19,12 +18,10 @@ function LoginHome() {
     navigation.navigate("Registrar");
   };
 
-  const { LoginToken } = auth;
-
   async function handleSignIn() {
     try {
       setLoading(true);
-      const isAuthenticated = await auth.LoginToken(email, password,username);
+      const isAuthenticated = await auth.LoginToken(email, password);
 
       if (isAuthenticated) {
         navigation.navigate("Nicho");
