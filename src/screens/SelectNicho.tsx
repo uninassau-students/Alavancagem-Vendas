@@ -17,18 +17,17 @@ function Nicho() {
     Roboto_700Bold,
   });
 
-  const { user } = useAuth();
+  const auth = useAuth();
 
   const navigation = useNavigation();
 
   const handlePress = () => {
     navigation.navigate("SelectCalendar");
   };
-  const handlePressRoupas = ()=>{
-    console.log('Indo pra Seleção de Roupas')
-    navigation.navigate('SelectCalendarRoupas')
-  }
-  console.log(user);
+  const handlePressRoupas = () => {
+    console.log("Indo pra Seleção de Roupas");
+    navigation.navigate("SelectCalendarRoupas");
+  };
 
   return (
     <NativeBaseProvider>
@@ -47,9 +46,15 @@ function Nicho() {
         >
           ESCOLHA SEU NICHO
         </Text>
-        <View>
-          <Text>{user && user.username}</Text>
-        </View>
+        <Text
+          style={{
+            fontSize: 30,
+            fontWeight: "500",
+            color: "#000",
+          }}
+        >
+          {auth.user?.username}
+        </Text>
         <View style={styles.containerimg}>
           <View style={styles.containerimgtxt}>
             <TouchableOpacity onPress={handlePress}>
@@ -65,7 +70,12 @@ function Nicho() {
                 }}
               />
             </TouchableOpacity>
-            <Text style={[styles.txt, { marginRight: 15,marginTop:15, width: "90%" }]}>
+            <Text
+              style={[
+                styles.txt,
+                { marginRight: 15, marginTop: 15, width: "90%" },
+              ]}
+            >
               Papelaria
             </Text>
           </View>
@@ -81,7 +91,9 @@ function Nicho() {
                 }}
               />
             </TouchableOpacity>
-            <Text style={[styles.txt, { width: "100%" ,marginTop:15,}]}>Roupas</Text>
+            <Text style={[styles.txt, { width: "100%", marginTop: 15 }]}>
+              Roupas
+            </Text>
           </View>
         </View>
         <View style={styles.containerdown}>
