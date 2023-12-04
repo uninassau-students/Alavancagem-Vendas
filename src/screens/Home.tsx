@@ -10,6 +10,7 @@ import {
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
 //
+import { useAuth } from "../context/useAuth";
 
 function Home() {
   const [fontsLoaded] = useFonts({
@@ -21,8 +22,13 @@ function Home() {
   const navigation = useNavigation();
 
   const handlePress = () => {
+    if (auth.user?.token) {
+      navigation.navigate("Nicho");
+      return;
+    }
     navigation.navigate("Login");
   };
+  const auth = useAuth();
 
   return (
     <NativeBaseProvider>
