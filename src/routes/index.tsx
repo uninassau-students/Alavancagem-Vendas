@@ -7,11 +7,11 @@ import { AppRoutes } from "./app.routes";
 import LoginHome from "../screens/Login";
 
 export function Routes() {
-  const { signed } = useAuth();
+  const { user } = useAuth();
   return (
     <Box flex={1}>
       <NavigationContainer>
-        {signed ? <PrivateRoutes /> : <AppRoutes />}
+        {user?.token ? <PrivateRoutes /> : <AppRoutes />}
       </NavigationContainer>
     </Box>
   );

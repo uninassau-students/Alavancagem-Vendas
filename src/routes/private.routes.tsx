@@ -63,20 +63,6 @@ export default function PrivateRoutes() {
             }}
           />
           <Stack.Screen
-            name="Registrar"
-            component={Register}
-            options={{
-              header: () => null,
-            }}
-          />
-          <Stack.Screen
-            name="Login"
-            component={LoginHome}
-            options={{
-              header: () => null,
-            }}
-          />
-          <Stack.Screen
             name="Nicho"
             component={Nicho}
             options={{
